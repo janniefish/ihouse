@@ -37,69 +37,39 @@
 	/* Image Style                                                                   */
 	/*********************************************************************************/
 
-	.image {
-		display: inline-block;
-	}
-
-	.image img {
-		display: block;
-		/* width: 100%; */
-	}
-
-	.image-full {
-		display: block;
-		/* width: 100%; */
-		margin: 0 0 2em 0;
-	}
-
-	.image-left {
-		/* float: left; */
-		margin: 0 2em 2em 0;
-	}
-
-	.image-centered {
-		display: block;
-		margin: 0 0 2em 0;
-	}
-
-	.image-centered img {
-		margin: 0 auto;
-		width: auto;
-	}
-
 	#fan {
 		width: 150px;
 		float: right;
 		margin-top: 10em;
 		margin-left: 15em;
+		cursor: pointer;
 	}
 
-	#imgClickAndChange {
+	#door {
 		height: 336px;
 		margin-top: 32px;
 		float: left;
-	}
-
-	.rgb {
-		margin-top: 50px;
-		float: right;
+		cursor: pointer;
 	}
 
 	#ring {
 		margin-top: 70px;
 		/* margin-right: 0px; */
 		width: 90px;
+		cursor: pointer;
 	}
 
 	#light {
 		margin-top: 140px;
 		width: 50px;
+		cursor: pointer;
 	}
 
 	#people_induction{
 		margin-top: 118px;
 		margin-left: 10px;
 		width: 25px;
+		cursor: url('./images/cursor.cur'),auto;
 	}
 
 	/*********************************************************************************/
@@ -107,8 +77,14 @@
 	/*********************************************************************************/
 
 	/*********************************************************************************/
-	/* Range  Style                                                                  */
+	/* RGB Range  Style                                                              */
 	/*********************************************************************************/
+
+	.rgb {
+		margin-top: 50px;
+		float: right;
+	}
+
 	.range {
 		-webkit-appearance: none;
 		border-radius: 2px;
@@ -116,6 +92,7 @@
 		height: 3px;
 		outline: none;
 		transition: .1s;
+		cursor: pointer;
 	}
 
 	.range::-webkit-slider-thumb {
@@ -279,7 +256,7 @@
 
 
 	/*********************************************************************************/
-	/* bottom                                                                        */
+	/* Bottom                                                                        */
 	/*********************************************************************************/
 
 	#bottom {
@@ -295,6 +272,9 @@
 		color: #FFF;
 	}
 
+	/*********************************************************************************/
+	/* Menu                                                                          */
+	/*********************************************************************************/
 	#common_box {
 		width: 300px;
 		position: fixed;

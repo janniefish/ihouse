@@ -53,7 +53,7 @@
 					switch (num) {
 						case 0:
 							doorOpen = doc.data().onoff;
-							changeImage();
+							changeDoor();
 							break;
 						case 1:
 							ledOpengreen = doc.data().green;
@@ -95,7 +95,7 @@
 	<div id="page" class="container">
 		<div id="content">
 			<div>
-				<img alt="關門" src="./images/closedoor.png" id="imgClickAndChange" onclick="changeImage()" />
+				<img alt="關門" src="./images/closedoor.png" id="door" onclick="changeDoor()" />
 			</div>
 			<div class="rgb">
 				紅色：<input type="range" class="range" id="red" name="action" min="120" max="129" value="50"><br>
@@ -144,8 +144,8 @@
 					<button name="action" class="btn btn-primary" type="submit" value="160">燈條發亮</button><br>
 				</div>
 				<div class="sbox2">
-					<img alt="關門" src="./images/closedoor.png" height=400px id="imgClickAndChange"
-						onclick="changeImage()" />
+					<img alt="關門" src="./images/closedoor.png" height=400px id="door"
+						onclick="changeDoor()" />
 				</div> -->
 					<!-- <div id="common_box">
 					<div id="cli_on">+</div>
@@ -231,7 +231,7 @@
 			send(action.value);
 		});
 
-		$('#imgClickAndChange').click(function (event) {
+		$('#door').click(function (event) {
 			// event.preventDefault();
 			let value = !doorOpen ? '111' : '110';
 			send(value);
@@ -259,14 +259,14 @@
 		//     );
 		// }
 
-		function changeImage() {
-			console.log(document.getElementById("imgClickAndChange").src);
+		function changeDoor() {
+			console.log(document.getElementById("door").src);
 			// var value;
 			if (!doorOpen) {
-				document.getElementById("imgClickAndChange").src = "./images/opendoor.png";
+				document.getElementById("door").src = "./images/opendoor.png";
 				// value="110";
 			} else {
-				document.getElementById("imgClickAndChange").src = "./images/closedoor.png";
+				document.getElementById("door").src = "./images/closedoor.png";
 				// value="111";
 			}
 			//  return value;
