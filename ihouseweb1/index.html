@@ -1,0 +1,91 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <title>My house</title>
+</head>
+<body>
+    <!-- <button name="action" type="submit" value="led"><img src="http://120.125.80.113/jpyuImages/image_52a.gif"></button> -->
+    <!-- <button name="action" type="submit" value="off">Off</button> -->
+    紅色：<input type="range" id="vol" name="action" min="120" max="129" value="120"><br>
+    綠色：<input type="range" id="vol" name="action" min="130" max="139" value="130"><br>
+    藍色：<input type="range" id="vol" name="action" min="140" max="149" value="140"><br>
+    <select>
+        <option value="150">關閉 LED</option>
+        <option value="151">漸變循環</option>
+        <option value="152">劇院追逐</option>
+        <option value="153">劇院追逐-彩虹色</option>
+        <option value="154">彩虹</option>
+        <option value="155">彩虹圓圈</option>
+        <option value="156">閃光</option>
+        <option value="157">流光</option>
+        <option value="158">賽隆人</option>
+        <option value="159">發泡</option>
+        </select>
+    <button name="action" type="submit" value="160">燈條發亮</button><br>
+    <img alt="關門" src="./image/closedoor.png" height=70% id="imgClickAndChange" onclick="changeImage()"  />
+        
+    
+    <script>
+        let doorOpen = false;
+        $('input, select').change(function (event) {
+            // event.preventDefault();
+            let action = event.target
+            send(action.value);
+        });
+
+        $('button').click(function (event) {
+            // event.preventDefault();
+            let action = event.target
+            send(action.value);
+        });
+
+        $('img').click(function (event) {
+            // event.preventDefault();
+            let value = !doorOpen ? '111' : '110';
+            send(value);
+        });
+
+        function send(value) {
+            $.get(
+                '/action/',
+                { 'action':  value},
+                function(data) {
+
+                }
+            );
+        }
+
+        // function janniefish(event) {
+        //     // event.preventDefault();
+        //     let action = event.target
+        //     $.get(
+        //         '/action/',
+        //         { 'action':  action.value},
+        //         function(data) {
+
+        //         }
+        //     );
+        // }
+
+        function changeImage() {
+            console.log(document.getElementById("imgClickAndChange").src);
+           // var value;
+            if (!doorOpen) {
+                document.getElementById("imgClickAndChange").src = "./image/opendoor.png";
+               // value="110";
+            }
+            else{
+                document.getElementById("imgClickAndChange").src = "./image/closedoor.png";
+               // value="111";
+            }
+          //  return value;
+          doorOpen = !doorOpen;
+        }      
+       
+        // let form = document.getElementById("myform");
+        // form.addEventListener("submit", janniefish);
+    </script>
+</body>
+
+</html>

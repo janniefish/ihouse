@@ -1,0 +1,316 @@
+	html,
+	body {
+		height: 100%;
+	}
+
+	body {
+		margin: 0px;
+		padding: 0px;
+		background: #ad8667 url('images/bg.jpg');
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 12pt;
+		font-weight: 400;
+		color: #515151;
+	}
+
+
+	h1,
+	h2,
+	h3 {
+		margin: 0;
+		padding: 0;
+		color: #32251B;
+	}
+
+	p {
+		margin-top: 0;
+		line-height: 180%;
+	}
+
+
+	.container {
+		margin: 0em auto;
+		width: 1200px;
+	}
+
+	/*********************************************************************************/
+	/* Image Style                                                                   */
+	/*********************************************************************************/
+
+	.image {
+		display: inline-block;
+	}
+
+	.image img {
+		display: block;
+		/* width: 100%; */
+	}
+
+	.image-full {
+		display: block;
+		/* width: 100%; */
+		margin: 0 0 2em 0;
+	}
+
+	.image-left {
+		/* float: left; */
+		margin: 0 2em 2em 0;
+	}
+
+	.image-centered {
+		display: block;
+		margin: 0 0 2em 0;
+	}
+
+	.image-centered img {
+		margin: 0 auto;
+		width: auto;
+	}
+
+	#fan {
+		width: 150px;
+		float: right;
+		margin-top: 10em;
+		margin-left: 15em;
+	}
+
+	#imgClickAndChange {
+		height: 336px;
+		margin-top: 32px;
+		float: left;
+	}
+
+	.rgb {
+		margin-top: 50px;
+		float: right;
+	}
+
+	#ring {
+		margin-top: 70px;
+		/* margin-right: 0px; */
+		width: 90px;
+	}
+
+	#light {
+		margin-top: 140px;
+		width: 50px;
+	}
+
+	#people_induction{
+		margin-top: 118px;
+		margin-left: 10px;
+		width: 25px;
+	}
+
+	/*********************************************************************************/
+	/* Button Style                                                                  */
+	/*********************************************************************************/
+
+	/*********************************************************************************/
+	/* Range  Style                                                                  */
+	/*********************************************************************************/
+	.range {
+		-webkit-appearance: none;
+		border-radius: 2px;
+		width: 200px;
+		height: 3px;
+		outline: none;
+		transition: .1s;
+	}
+
+	.range::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		transition: .1s;
+	}
+
+	.range::-webkit-slider-thumb:hover,
+	.range::-webkit-slider-thumb:active {
+		width: 16px;
+		height: 16px;
+	}
+
+	#red {
+		/* background-image:-webkit-linear-gradient(left ,#f22 0%,#f22 0%,#fff 100%, #fff 100%); */
+		box-shadow: inset #ebb 0 0 5px;
+		margin-bottom: 15px;
+	}
+
+	#red::-webkit-slider-thumb {
+		background: #f22;
+	}
+
+	#green {
+		/* background-image:-webkit-linear-gradient(left ,rgb(34, 255, 170) 0%,rgb(34, 255, 170) 50%,#fff 50%, #fff 100%); */
+		box-shadow: inset #C1FFE4 0 0 5px;
+		margin-bottom: 15px;
+	}
+
+	#green::-webkit-slider-thumb {
+		background: rgb(34, 255, 170);
+	}
+
+	#blue {
+		/* background-image:-webkit-linear-gradient(left ,rgb(34, 86, 255) 0%,rgb(34, 86, 255) 50%,#fff 50%, #fff 100%); */
+		box-shadow: inset #84C1FF 0 0 5px;
+	}
+
+	#blue::-webkit-slider-thumb {
+		background: rgb(34, 86, 255);
+	}
+
+
+	/*********************************************************************************/
+	/* Heading Titles                                                                */
+	/*********************************************************************************/
+
+	.title {
+		margin-bottom: 3em;
+	}
+
+	.title h2 {
+		font-weight: 400;
+		font-size: 2.8em;
+		color: #323232;
+	}
+
+	/*********************************************************************************/
+	/* Header                                                                        */
+	/*********************************************************************************/
+
+	/* #header-wrapper
+	{
+	} */
+
+	#header {
+		position: relative;
+		height: 150px;
+	}
+
+	/*********************************************************************************/
+	/* Logo                                                                          */
+	/*********************************************************************************/
+
+	#logo {
+		position: absolute;
+		top: 3em;
+		left: 50px;
+		width: 100%;
+	}
+
+	#logo h1 {
+		display: inline-block;
+		font-size: 2.5em;
+		text-transform: uppercase;
+		font-weight: 700;
+		color: #FFF;
+	}
+
+	/*********************************************************************************/
+	/* Page                                                                          */
+	/*********************************************************************************/
+
+	#page {
+		overflow: hidden;
+		/* background-color: #FFF; */
+		border-top: 20px solid #32251B;
+		background-image: url('./images/housebg.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 550px;
+	}
+
+	/*********************************************************************************/
+	/* Content                                                                       */
+	/*********************************************************************************/
+
+	#content {
+		float: left;
+		width: 500px;
+		padding: 50px;
+		/* background-color: #F3F3F3; */
+	}
+
+	/*********************************************************************************/
+	/* Sidebar                                                                       */
+	/*********************************************************************************/
+
+	#sidebar {
+		float: right;
+		width: 500px;
+		padding: 50px;
+		padding-bottom: 0px;
+	}
+
+	#stwo-col {
+		margin-top: 2em;
+	}
+
+	#stwo-col h2 {
+		display: block;
+		padding-bottom: 1.5em;
+		letter-spacing: 0.10em;
+		text-transform: uppercase;
+		font-size: 1.2em;
+		font-weight: 600;
+		color: #454445;
+	}
+
+	#stwo-col .sbox1 {
+		float: left;
+		/* width: 230px; */
+	}
+
+	#stwo-col .sbox2 {
+		float: right;
+		width: 230px;
+	}
+
+	.sbox {
+		margin-bottom: 2em;
+	}
+
+	/*********************************************************************************/
+	/* Footer                                                                        */
+	/*********************************************************************************/
+
+
+
+	/*********************************************************************************/
+	/* bottom                                                                        */
+	/*********************************************************************************/
+
+	#bottom {
+		overflow: hidden;
+		padding: 5em 0em;
+	}
+
+	#bottom p {
+		letter-spacing: 0.20em;
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 0.80em;
+		color: #FFF;
+	}
+
+	#common_box {
+		width: 300px;
+		position: fixed;
+		_position: absolute;
+		right: 0;
+		top: 40%;
+		background: #fff;
+		z-index: 88
+	}
+
+	#cli_on {
+		width: 30px;
+		height: 180px;
+		float: left;
+		cursor: pointer;
+		background: #ac8932;
+		text-align: center;
+		line-height: 180px
+	}
