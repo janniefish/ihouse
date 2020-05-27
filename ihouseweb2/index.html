@@ -147,7 +147,7 @@
 						</div>
 						<div class="sbox2">
 							<p>點選按鈕觀賞燈條效果</p>
-							<button name="action" id="lightStrip" type="submit" value="160">燈條發亮</button>
+							<button name="action" id="lightStrip" type="submit" value="160" onclick="changelightStrip()">燈條發亮</button>
 						</div>
 					</div>
 				</div>
@@ -204,7 +204,7 @@
 
 		$('button').click(function (event) {
 			// event.preventDefault();
-			lightStrip = !lightStrip;
+			// lightStrip = !lightStrip;
 			let action = event.target
 			updateData('lightStrip', {
 				onoff: lightStrip
@@ -286,6 +286,18 @@
 			lightOpen = !lightOpen;
 
 		}
+
+		function changelightStrip() {
+			console.log(document.getElementById("lightStrip").innerText);
+			if (lightStrip) {
+				document.getElementById("lightStrip").innerText= "燈條發亮";
+			} else {
+				document.getElementById("lightStrip").innerText = "燈條關閉";
+			}
+			lightStrip = !lightStrip;
+
+		}
+
 
 		// function changeRedLed() {
 		// 	if (!ledOpenred) {
