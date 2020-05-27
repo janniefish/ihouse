@@ -72,9 +72,28 @@
 		/* cursor: url('./images/cursor.cur'),auto; */
 	}
 
+	img {
+		transform: scale(1, 1);
+		transition: all 0.5s ease-out;
+	}
+
+	img:hover {
+		transform: scale(1.2, 1.2);
+	}
+
 	/*********************************************************************************/
 	/* Button Style                                                                  */
 	/*********************************************************************************/
+	#lightStrip {
+		cursor: pointer;
+	}
+
+	/*********************************************************************************/
+	/* Dropdown Style                                                                */
+	/*********************************************************************************/
+	#Options {
+		cursor: pointer;
+	}
 
 	/*********************************************************************************/
 	/* RGB Range  Style                                                              */
@@ -83,6 +102,12 @@
 	.rgb {
 		margin-top: 50px;
 		float: right;
+		transform: scale(1, 1);
+		transition: all 0.5s ease-out;
+	}
+
+	.rgb:hover {
+		transform: scale(1.2, 1.2);
 	}
 
 	.range {
@@ -275,6 +300,13 @@
 	/*********************************************************************************/
 	/* Menu                                                                          */
 	/*********************************************************************************/
+	/* .box{
+		transform: scale(1, 1);
+		transition: all 0.5s ease-out; 
+	}
+	.box:hover{
+		transform: scale(1.2, 1.2);
+	} */
 	#common_box {
 		width: 300px;
 		position: fixed;
@@ -282,7 +314,7 @@
 		right: 0;
 		top: 60%;
 		background: #fff;
-		z-index: 88
+		z-index: 88;
 	}
 
 	#cli_on {
@@ -292,5 +324,5 @@
 		cursor: pointer;
 		background: #32251B;
 		text-align: center;
-		line-height: 180px
+		line-height: 180px;
 	}
