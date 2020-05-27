@@ -6,7 +6,7 @@
 	body {
 		margin: 0px;
 		padding: 0px;
-		background: #ad8667 url('images/bg.jpg');
+		background: #ad8667 url('./images/bg.jpg');
 		font-family: 'Source Sans Pro', sans-serif;
 		font-size: 12pt;
 		font-weight: 400;
@@ -24,9 +24,9 @@
 
 	p {
 		margin-top: 0;
+		padding-left: 10px;
 		line-height: 180%;
 	}
-
 
 	.container {
 		margin: 0em auto;
@@ -86,6 +86,8 @@
 	/*********************************************************************************/
 	#lightStrip {
 		cursor: pointer;
+		margin-left: 10px;
+		margin-right: 10px;
 	}
 
 	/*********************************************************************************/
@@ -93,8 +95,40 @@
 	/*********************************************************************************/
 	#Options {
 		cursor: pointer;
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-bottom: 50px;
+		text-align: center;
+		border: 1.5px solid;
+		border-color: #84C1FF;
+		width: 130px;
+		height: 20px;
+		/* 移除箭頭樣式 */
+		appearance: none;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+
+		/*改變右邊箭頭樣式 */
+		background: url("./images/arrow.png") no-repeat right center transparent;
+		background-size: contain;
+
+
+		/* width:100%;
+		height:34px;
+		padding-left:2px;
+		padding-right:40px; */
+		/* background-color:#F6F7F7;
+		color:gray; */
 	}
 
+	/*IE隱藏箭頭樣式*/
+	/* #Options::-ms-expand { 
+		display: none; 
+	  }
+	  
+	  #Options:focus{
+		box-shadow: 0 0 5px 2px #467BF4;    
+	  } */
 	/*********************************************************************************/
 	/* RGB Range  Style                                                              */
 	/*********************************************************************************/
