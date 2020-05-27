@@ -4,7 +4,6 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Myhouse</title>
-	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 	<link href="./default.css" rel="stylesheet" type="text/css" media="all" />
 	<script src="https://www.oxxostudio.tw/js/lib/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -326,7 +325,6 @@
 		// 	ledOpengreen = !ledOpengreen;
 
 		// }
-
 		$(function () {
 			var r = $('#red');
 			r.on('mouseenter', function () {
@@ -353,6 +351,7 @@
 				changergb();
 			}
 		});
+		
 		$(function () {
 			var g = $('#green');
 			g.on('mouseenter', function () {
@@ -405,6 +404,7 @@
 				changergb();
 			}
 		});
+
 
 		function changergb() {
 			if (r_color == 0 && g_color == 0 && b_color == 0) {
