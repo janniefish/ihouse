@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -146,7 +146,8 @@
 						</div>
 						<div class="sbox2">
 							<p>點選按鈕觀賞燈條效果</p>
-							<button name="action" id="lightStrip" type="submit" value="160" onclick="changelightStrip()">燈條發亮</button>
+							<button name="action" id="lightStrip" type="submit" value="160"
+								onclick="changelightStrip()">燈條發亮</button>
 						</div>
 					</div>
 				</div>
@@ -238,9 +239,24 @@
 			document.getElementById("fan").src = "./images/fan.png";
 			document.getElementById("light").src = "./images/closelight.png";
 			document.getElementById("page").style.backgroundImage = "url('./images/house_black.png')";
-			//  var r=document.getElementById("#red");
-			//  r.value=120;
+			r = $('#red').val(120);
+			b = $('#green').val(130);
+			g = $('#blue').val(140);
+			r.css({
+				'background-image': '-webkit-linear-gradient(left ,rgb(34, 255, 170) 0%,rgb(34, 255, 170) 0%,#fff 0%, #fff 100%)'
+			});
+			g.css({
+				'background-image': '-webkit-linear-gradient(left ,rgb(34, 255, 170) 0%,rgb(34, 255, 170) 0%,#fff 0%, #fff 100%)'
+			});
+			b.css({
+				'background-image': '-webkit-linear-gradient(left ,rgb(34, 255, 170) 0%,rgb(34, 255, 170) 0%,#fff 0%, #fff 100%)'
+			});
+			document.getElementById('page').style.borderTop = "20px solid #32251B";
+			//  var r=document.getElementById("red");
 			// console.log("r.value"+r.value);
+			//  r.value=120;		
+			// var r = $('#red');
+			// r.val()=120;
 		}
 
 		function peopleLeave() {
@@ -289,7 +305,7 @@
 		function changelightStrip() {
 			console.log(document.getElementById("lightStrip").innerText);
 			if (lightStrip) {
-				document.getElementById("lightStrip").innerText= "燈條發亮";
+				document.getElementById("lightStrip").innerText = "燈條發亮";
 			} else {
 				document.getElementById("lightStrip").innerText = "燈條關閉";
 			}
@@ -351,7 +367,7 @@
 				changergb();
 			}
 		});
-		
+
 		$(function () {
 			var g = $('#green');
 			g.on('mouseenter', function () {
