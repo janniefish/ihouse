@@ -93,7 +93,11 @@
 		</div>
 	</div>
 	<div id="page" class="container">
+		<!-- 左半部 -->
 		<div id="content">
+			<!-- <div class="title">
+				<h2>Welcome to Myhouse</h2>
+			</div> -->
 			<div>
 				<img alt="關門" src="./images/closedoor.png" id="door" onclick="changeDoor()" />
 			</div>
@@ -106,9 +110,6 @@
 			<img alt="人體感應器" src="./images/people_induction.png" id="people_induction" onmouseover="peopleInduction()"
 				onmouseout="peopleLeave()" />
 
-			<!-- <div class="title">
-				<h2>Welcome to Myhouse</h2>
-			</div> -->
 			<!-- <div class="image image-full">
 				<img id="ledImage" src="http://120.125.80.113/jpyuImages/image_52a.gif" width="230px"
 					style="float: left;" onclick="changeRedLed()" />
@@ -116,43 +117,18 @@
 					style="float: right;" onclick="changeGreenLed()" />
 			</div> -->
 			<!-- <img src="images/pic01.jpg" class="image image-full" alt="" /> -->
-			<p></p>
 		</div>
+
 		<div id="sidebar">
 			<div id="stwo-col">
-				<div class="sbox1">
+				<div class="sbox">
 					<!-- <img alt="時鐘" src="./images/clock.png" id="clock" width="90px" /><br/> -->
 					<img alt="燈環" src="./images/ring_original.png" id="ring" onclick="changering()" />
 					<img alt="電風扇" src="./images/fan.png" id="fan" onclick="changefan()" />
-					<!-- <div class="sbox">
-						紅色：<input type="range" class="range" id="red" name="action" min="120" max="129" value="50"><br>
-						綠色：<input type="range" class="range" id="green" name="action" min="130" max="139"
-							value="130"><br>
-						藍色：<input type="range" class="range" id="blue" name="action" min="140" max="149"
-							value="140"><br>
-					</div> -->
-					<!-- <select id="Options">
-						<option value="150">關閉 LED</option>
-						<option value="151">漸變循環</option>
-						<option value="152">劇院追逐</option>
-						<option value="153">劇院追逐-彩虹色</option>
-						<option value="154">彩虹</option>
-						<option value="155">彩虹圓圈</option>
-						<option value="156">閃光</option>
-						<option value="157">流光</option>
-						<option value="158">賽隆人</option>
-						<option value="159">發泡</option>
-					</select>
-					<button name="action" class="btn btn-primary" type="submit" value="160">燈條發亮</button><br>
-				</div>
-				<div class="sbox2">
-					<img alt="關門" src="./images/closedoor.png" height=400px id="door"
-						onclick="changeDoor()" />
-				</div> -->
 					<div id="common_box" class="box">
 						<div id="cli_on" class="box">+</div>
-						<!-- <div class="sbox"> -->
-							<p id="a">點選選單更換燈環效果</p>
+						<div class="sbox1">
+							<p>點選選單更換燈環效果</p>
 							<select id="Options">
 								<option value="150">關閉 LED</option>
 								<!--ok-->
@@ -168,10 +144,11 @@
 								<option value="158">賽隆人</option>
 								<option value="159">發泡</option>
 							</select>
-							<div>
-								<button name="action" id="lightStrip" type="submit" value="160">燈條發亮</button>
-							</div>
-						<!-- </div> -->
+						</div>
+						<div class="sbox2">
+							<p>點選按鈕觀賞燈條效果</p>
+							<button name="action" id="lightStrip" type="submit" value="160">燈條發亮</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -191,7 +168,6 @@
 		var b_color = 0;
 		$('input, select').change(function (event) {
 			// event.preventDefault();
-			console.log("yo");
 			let action = event.target;
 			let category = '';
 			let num = Math.floor(Number(action.value) / 10);
@@ -253,17 +229,6 @@
 				}
 			);
 		}
-		// function janniefish(event) {
-		//     // event.preventDefault();
-		//     let action = event.target
-		//     $.get(
-		//         '/action/',
-		//         { 'action':  action.value},
-		//         function(data) {
-
-		//         }
-		//     );
-		// }
 
 		function peopleInduction() {
 			// if(document.getElementById("people_induction").style.cursor==default){
@@ -285,21 +250,16 @@
 
 		function changeDoor() {
 			console.log(document.getElementById("door").src);
-			// var value;
 			if (!doorOpen) {
 				document.getElementById("door").src = "./images/opendoor.png";
-				// value="110";
 			} else {
 				document.getElementById("door").src = "./images/closedoor.png";
-				// value="111";
 			}
-			//  return value;
 			updateData('door', {
 				onoff: Boolean(doorOpen)
 			});
 
 			doorOpen = !doorOpen;
-
 		}
 
 		function changefan() {
@@ -309,7 +269,6 @@
 			} else {
 				document.getElementById("fan").src = "./images/fan.png";
 			}
-			//  return value
 
 			fanOpen = !fanOpen;
 
@@ -317,7 +276,6 @@
 
 		function changelight() {
 			console.log(document.getElementById("light").src);
-			// var value;
 			if (!lightOpen) {
 				document.getElementById("light").src = "./images/openlight.png";
 				document.getElementById("page").style.backgroundImage = "url('./images/housebg.jpg')";
@@ -356,8 +314,7 @@
 		// 	ledOpengreen = !ledOpengreen;
 
 		// }
-		// let form = document.getElementById("myform");
-		// form.addEventListener("submit", janniefish);
+
 		$(function () {
 			var r = $('#red');
 			r.on('mouseenter', function () {
