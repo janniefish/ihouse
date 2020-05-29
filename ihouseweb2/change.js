@@ -47,12 +47,13 @@ function getData() {
                     changeDoor();
                     break;
                 case 1:
-                    // ledOpengreen = doc.data().green;
-                    // ledOpenred = doc.data().red;
-                    // changeRedLed();
-                    // changeGreenLed();
+                    fanOpen = doc.data().onoff;
+                    changefan();
                     break;
                 case 2:
+
+                    break;
+                case 3:
                     document.getElementById('red').value = doc.data().red;
                     document.getElementById('green').value = doc.data().green;
                     document.getElementById('blue').value = doc.data().blue;
@@ -74,11 +75,16 @@ function getData() {
                             rgbcolor + '%,#fff ' + rgbcolor + '%, #fff 100%)'
                     });
                     break;
-                case 3:
-                    document.getElementById('Options').value = doc.data().Options;
-
-                    break;
                 case 4:
+                    lightOpen = doc.data().onoff;
+                    changelight();
+                    break;
+                case 5:
+                    document.getElementById('Options').value = doc.data().Options;
+                    break;
+                case 6:
+                    lightStrip = doc.data().onoff;
+                    changelightStrip();
                     break;
             }
             num++;
@@ -120,11 +126,24 @@ $('input, select').change(function (event) {
             Options: Number(action.value)
         }
         category = 'lightRing';
+        console.log("action.value"+action.value);
     }
     updateData(category, value);
     send(action.value);
 
 });
+
+$('#Options').click(function (event) {
+    // event.preventDefault();
+    value = {
+        Options: Number(action.value)
+    }
+    category = 'lightRing';
+    console.log("lightRing=" + action.value);
+    updateData(category, value);
+    send(action.value);
+});
+
 
 $('button').click(function (event) {
     // event.preventDefault();
@@ -141,17 +160,17 @@ $('#door').click(function (event) {
     // event.preventDefault();
     let value = !doorOpen ? '111' : '110';
 
-    // updateData('door', {
-    //     onoff: Boolean(doorOpen)
-    // });
+    updateData('door', {
+        onoff: Boolean(doorOpen)
+    });
     send(value);
 });
 
 function send(value) {
     $.get(
         '/action/', {
-            'action': value
-        },
+        'action': value
+    },
         function (data) {
 
         }
@@ -182,7 +201,21 @@ function peopleInduction() {
     r_color = 0;
     g_color = 0;
     b_color = 0;
-    changergb();
+    updateData('door', {
+        onoff: true
+    });
+    updateData('fan', {
+        onoff:  true
+    });
+    updateData('lightOpen', {
+        onoff: true
+    });
+      updateData('light', {
+        blue: 0,
+        green: 0,
+        red: 0,
+    });
+    changergfb();
     //  var r=document.getElementById("red");
     // console.log("r.value"+r.value);
     //  r.value=120;		
@@ -192,6 +225,7 @@ function peopleInduction() {
 
 function peopleLeave() {
     document.getElementById("door").src = "./images/closedoor.png";
+    
 }
 
 function changeDoor() {
@@ -201,9 +235,9 @@ function changeDoor() {
     } else {
         document.getElementById("door").src = "./images/closedoor.png";
     }
-    // updateData('door', {
-    //     onoff: Boolean(doorOpen)
-    // });
+    updateData('door', {
+        onoff: Boolean(doorOpen)
+    });
 
     doorOpen = !doorOpen;
 }
@@ -215,7 +249,9 @@ function changefan() {
     } else {
         document.getElementById("fan").src = "./images/fan.png";
     }
-
+    updateData('fan', {
+        onoff: Boolean(fanOpen)
+    });
     fanOpen = !fanOpen;
 
 }
@@ -229,8 +265,11 @@ function changelight() {
         document.getElementById("light").src = "./images/closelight.png";
         document.getElementById("page").style.backgroundImage = "url('./images/house_black.png')";
     }
+  
     lightOpen = !lightOpen;
-
+    updateData('lightOpen', {
+        onoff: Boolean(!lightOpen)
+    });
 }
 
 function changelightStrip() {
@@ -240,6 +279,9 @@ function changelightStrip() {
     } else {
         document.getElementById("lightStrip").innerText = "燈條關閉";
     }
+    updateData('lightStrip', {
+        onoff: Boolean(lightStrip)
+    });
     lightStrip = !lightStrip;
 
 }
@@ -282,12 +324,22 @@ $(function () {
             r_color = ((r.val() % 100) % 10) * (255 / 9);
             console.log("val=" + p);
             bg(p);
+            // updateData('light', {
+            //     red: Number(r.val()),
+            // });
         });
         r.on('mousemove', function () {
             p = (r.val() - 120) * 10 + 5;
             r_color = ((r.val() % 100) % 10) * (255 / 9);
             bg(p);
+            // updateData('light', {
+            //     red: Number(r.val()),
+            // });
         });
+
+        // updateData('light', {
+        //     red: Number(r.val()),
+        // });
     });
 
     function bg(n) {
@@ -310,12 +362,22 @@ $(function () {
             g_color = ((g.val() % 100) % 10) * (255 / 9);
             console.log("val=" + p);
             bg(p);
+            // updateData('light', {
+            //     green: Number(g.val()),
+            // });
         });
         g.on('mousemove', function () {
             p = (g.val() - 130) * 10 + 5;
             g_color = ((g.val() % 100) % 10) * (255 / 9);
             bg(p);
+            // updateData('light', {
+            //     green: Number(g.val()),
+            // });
         });
+      
+        // updateData('light', {
+        //     green: Number(g.val()),
+        // });
     });
 
     function bg(n) {
@@ -334,14 +396,24 @@ $(function () {
         b.on('click', function () {
             p = (b.val() - 140) * 10 + 5;
             b_color = ((b.val() % 100) % 10) * (255 / 9);
-            console.log("val=" + p);
+            console.log("val=" + b.val());
             bg(p);
+            // updateData('light', {
+            //     blue: Number(b.val()),
+            // });
         });
         b.on('mousemove', function () {
             p = (b.val() - 140) * 10 + 5;
             b_color = ((b.val() % 100) % 10) * (255 / 9);
             bg(p);
+            // updateData('light', {
+            //     blue: Number(b.val()),
+            // });
         });
+
+        // updateData('light', {
+        //     blue: Number(b.val()),
+        // });
     });
 
     function bg(n) {
@@ -357,11 +429,23 @@ $(function () {
 function changergb() {
     if (r_color == 0 && g_color == 0 && b_color == 0) {
         document.getElementById('page').style.borderTop = "20px solid #32251B";
+
     } else {
         document.getElementById('page').style.borderTop = "20px solid rgb(" + r_color + "," + g_color +
             "," + b_color + ")";
+
     }
+    var b = $('#blue');
+    var g = $('#green');
+    var r = $('#red');
+    updateData('light', {
+        blue: Number(b.val()),
+        green: Number(g.val()),
+        red: Number(r.val()),
+    });
+
     console.log("r:" + r_color);
     console.log("g:" + g_color);
-    console.log("b:" + b_color);
+    console.log("b:" + b.val());
 }
+
