@@ -80,7 +80,7 @@ function getData() {
                     changelight();
                     break;
                 case 5:
-                    document.getElementById('Options').value = doc.data().Options;
+                    document.getElementById('options').value = doc.data().Options;
                     break;
                 case 6:
                     lightStrip = doc.data().onoff;
@@ -98,6 +98,7 @@ function getData() {
 
 $('input, select').change(function (event) {
     // event.preventDefault();
+    console.log("input, select");
     let action = event.target;
     let category = '';
     let num = Math.floor(Number(action.value) / 10);
@@ -133,16 +134,21 @@ $('input, select').change(function (event) {
 
 });
 
-$('#Options').click(function (event) {
+function changeOptions() {
     // event.preventDefault();
+    console.log("#options");
+    //let action = event.target;
+    let event=document.getElementById('options').value;
+
     value = {
-        Options: Number(action.value)
+        Options: Number(event)
     }
     category = 'lightRing';
-    console.log("lightRing=" + action.value);
+  
     updateData(category, value);
-    send(action.value);
-});
+   send(event);
+   
+}
 
 
 $('button').click(function (event) {
@@ -152,7 +158,7 @@ $('button').click(function (event) {
     updateData('lightStrip', {
         onoff: lightStrip
     });
-
+    console.log("button");
     send(action.value);
 });
 
@@ -163,6 +169,7 @@ $('#door').click(function (event) {
     updateData('door', {
         onoff: Boolean(doorOpen)
     });
+    console.log("#door");
     send(value);
 });
 
@@ -215,7 +222,10 @@ function peopleInduction() {
         green: 0,
         red: 0,
     });
+    console.log("peopleInduction");
     changergfb();
+
+
     //  var r=document.getElementById("red");
     // console.log("r.value"+r.value);
     //  r.value=120;		
@@ -349,7 +359,10 @@ $(function () {
                 '%, #fff 100%)'
         });
         changergb();
+        console.log("r");
     }
+
+
 });
 
 $(function () {
@@ -386,6 +399,7 @@ $(function () {
                 n + '%,#fff ' + n + '%, #fff 100%)'
         });
         changergb();
+        console.log("g");
     }
 });
 $(function () {
@@ -422,6 +436,7 @@ $(function () {
                 n + '%,#fff ' + n + '%, #fff 100%)'
         });
         changergb();
+        console.log("b");
     }
 });
 
@@ -444,8 +459,8 @@ function changergb() {
         red: Number(r.val()),
     });
 
-    console.log("r:" + r_color);
-    console.log("g:" + g_color);
-    console.log("b:" + b.val());
+    // console.log("r:" + r_color);
+    // console.log("g:" + g_color);
+    // console.log("b:" + b.val());
 }
 
