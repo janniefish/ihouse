@@ -134,21 +134,6 @@ $('input, select').change(function (event) {
 
 });
 
-function changeOptions() {
-    // event.preventDefault();
-    console.log("#options");
-    //let action = event.target;
-    let event=document.getElementById('options').value;
-
-    value = {
-        Options: Number(event)
-    }
-    category = 'lightRing';
-  
-    updateData(category, value);
-   send(event);
-   
-}
 
 
 $('button').click(function (event) {
@@ -183,6 +168,37 @@ function send(value) {
         }
     );
 }
+
+function changethreelight() {
+   
+    console.log("changethreelight");
+    var b = $('#blue');
+    var g = $('#green');
+    var r = $('#red');
+    updateData('light', {
+        blue: Number(b.val()),
+        green: Number(g.val()),
+        red: Number(r.val()),
+    });
+}
+
+
+function changeOptions() {
+    // event.preventDefault();
+    console.log("#options");
+    //let action = event.target;
+    let event=document.getElementById('options').value;
+
+    value = {
+        Options: Number(event)
+    }
+    category = 'lightRing';
+  
+    updateData(category, value);
+   send(event);
+   
+}
+
 
 function peopleInduction() {
     // if(document.getElementById("people_induction").style.cursor==default){
@@ -334,22 +350,15 @@ $(function () {
             r_color = ((r.val() % 100) % 10) * (255 / 9);
             console.log("val=" + p);
             bg(p);
-            // updateData('light', {
-            //     red: Number(r.val()),
-            // });
+    
         });
         r.on('mousemove', function () {
             p = (r.val() - 120) * 10 + 5;
             r_color = ((r.val() % 100) % 10) * (255 / 9);
             bg(p);
-            // updateData('light', {
-            //     red: Number(r.val()),
-            // });
+         
         });
 
-        // updateData('light', {
-        //     red: Number(r.val()),
-        // });
     });
 
     function bg(n) {
@@ -375,22 +384,16 @@ $(function () {
             g_color = ((g.val() % 100) % 10) * (255 / 9);
             console.log("val=" + p);
             bg(p);
-            // updateData('light', {
-            //     green: Number(g.val()),
-            // });
+           
         });
         g.on('mousemove', function () {
             p = (g.val() - 130) * 10 + 5;
             g_color = ((g.val() % 100) % 10) * (255 / 9);
             bg(p);
-            // updateData('light', {
-            //     green: Number(g.val()),
-            // });
+           
         });
       
-        // updateData('light', {
-        //     green: Number(g.val()),
-        // });
+  
     });
 
     function bg(n) {
@@ -412,22 +415,16 @@ $(function () {
             b_color = ((b.val() % 100) % 10) * (255 / 9);
             console.log("val=" + b.val());
             bg(p);
-            // updateData('light', {
-            //     blue: Number(b.val()),
-            // });
+           
         });
         b.on('mousemove', function () {
             p = (b.val() - 140) * 10 + 5;
             b_color = ((b.val() % 100) % 10) * (255 / 9);
             bg(p);
-            // updateData('light', {
-            //     blue: Number(b.val()),
-            // });
+         
         });
 
-        // updateData('light', {
-        //     blue: Number(b.val()),
-        // });
+      
     });
 
     function bg(n) {
@@ -450,17 +447,10 @@ function changergb() {
             "," + b_color + ")";
 
     }
-    var b = $('#blue');
-    var g = $('#green');
-    var r = $('#red');
-    updateData('light', {
-        blue: Number(b.val()),
-        green: Number(g.val()),
-        red: Number(r.val()),
-    });
+   
 
-    // console.log("r:" + r_color);
-    // console.log("g:" + g_color);
-    // console.log("b:" + b.val());
+    console.log("r:" + r_color);
+    console.log("g:" + g_color);
+    console.log("b:" + b_color);
 }
 

@@ -37,9 +37,9 @@
 				<img alt="關門" src="./images/closedoor.png" id="door" onclick="changeDoor()" />
 			</div>
 			<div class="rgb">
-				紅色：<input type="range" class="range" id="red" name="action" min="120" max="129" value="120"><br>
-				綠色：<input type="range" class="range" id="green" name="action" min="130" max="139" value="130"><br>
-				藍色：<input type="range" class="range" id="blue" name="action" min="140" max="149" value="140">
+				紅色：<input type="range" class="range" id="red" name="action" min="120" max="129" value="120" onchange="changethreelight()"><br>
+				綠色：<input type="range" class="range" id="green" name="action" min="130" max="139" value="130" onchange="changethreelight()"><br>
+				藍色：<input type="range" class="range" id="blue" name="action" min="140" max="149" value="140" onchange="changethreelight()">
 			</div>
 			<img alt="開燈" src="./images/openlight.png" id="light" width="60px" onclick="changelight()" /><br>
 			<img alt="人體感應器" src="./images/people_induction.png" id="people_induction" onmouseover="peopleInduction()"
