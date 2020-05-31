@@ -56,23 +56,27 @@ function getData() {
                     document.getElementById('red').value = doc.data().red;
                     document.getElementById('green').value = doc.data().green;
                     document.getElementById('blue').value = doc.data().blue;
-                    var rgbcolor = 0;
-                    rgbcolor = ($('#red').val() - 120) * 10 + 5;
-                    $('#red').css({
-                        'background-image': '-webkit-linear-gradient(left ,#f22 0%,#f22 ' + rgbcolor +
-                            '%,#fff ' + rgbcolor +
-                            '%, #fff 100%)'
+                    
+                    let rgb= ['#red','#green','#blue'];
+                    let rgb_color= [0,0,0];
+                    let color = [
+                        '#f22 0%,#f22 ',
+                        'rgb(34, 255, 170) 0%,rgb(34, 255, 170) ' ,
+                        'rgb(34, 86, 255) 0%,rgb(34, 86, 255) ' , 
+                    ]
+                    rgb.forEach((value, index) =>{
+                        let rgbcolor = ($(value).val() - (120 + index * 10) ) * 10 + 5;
+                        rgb_color[index]=(($(value).val() % 100) % 10) * (255 / 9);
+                       
+                        $(value).css({
+                            'background-image': '-webkit-linear-gradient(left ,'+color[index]+rgbcolor+'%,#fff '+rgbcolor+'%, #fff 100%)'
+                        });
+                        
                     });
-                    rgbcolor = ($('#green').val() - 130) * 10 + 5;
-                    $('#green').css({
-                        'background-image': '-webkit-linear-gradient(left ,rgb(34, 255, 170) 0%,rgb(34, 255, 170) ' +
-                            rgbcolor + '%,#fff ' + rgbcolor + '%, #fff 100%)'
-                    });
-                    rgbcolor = ($('#blue').val() - 140) * 10 + 5;
-                    $('#blue').css({
-                        'background-image': '-webkit-linear-gradient(left ,rgb(34, 86, 255) 0%,rgb(34, 86, 255) ' +
-                            rgbcolor + '%,#fff ' + rgbcolor + '%, #fff 100%)'
-                    });
+                    r_color = rgb_color[0];
+                    g_color = rgb_color[1];
+                    b_color = rgb_color[2];
+                    changergb();
                     break;
                 case "lightOpen":
                     lightOpen = doc.data().onoff;
