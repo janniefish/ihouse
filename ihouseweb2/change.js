@@ -37,23 +37,22 @@ getData();
 
 function getData() {
     var ref = db.collection('iHouse');
-    let num = 0;
     ref.get().then(querySnapshot => {
         querySnapshot.forEach(doc => {
-            console.log(doc.data());
-            switch (num) {
-                case 0:
+            console.log(doc.id);
+            switch (doc.id) {
+                case "door":
                     doorOpen = doc.data().onoff;
                     changeDoor();
                     break;
-                case 1:
+                case "fan":
                     fanOpen = doc.data().onoff;
                     changefan();
                     break;
-                case 2:
+                case "led":
 
                     break;
-                case 3:
+                case "light":
                     document.getElementById('red').value = doc.data().red;
                     document.getElementById('green').value = doc.data().green;
                     document.getElementById('blue').value = doc.data().blue;
@@ -75,19 +74,19 @@ function getData() {
                             rgbcolor + '%,#fff ' + rgbcolor + '%, #fff 100%)'
                     });
                     break;
-                case 4:
+                case "lightOpen":
                     lightOpen = doc.data().onoff;
                     changelight();
                     break;
-                case 5:
+                case "lightRing":
                     document.getElementById('options').value = doc.data().Options;
                     break;
-                case 6:
+                case "lightStrip":
                     lightStrip = doc.data().onoff;
                     changelightStrip();
                     break;
             }
-            num++;
+            
 
 
         });
@@ -96,67 +95,64 @@ function getData() {
 
 }
 
-$('input, select').change(function (event) {
-    // event.preventDefault();
-    console.log("input, select");
-    let action = event.target;
-    let category = '';
-    let num = Math.floor(Number(action.value) / 10);
-    console.log(Number(action.value) / 10);
-    let value;
-    if (num == 12) {
-        value = {
-            red: Number(action.value)
-        };
-        category = 'light';
-    }
-    if (num == 13) {
-        value = {
-            green: Number(action.value)
-        };
-        category = 'light';
-    }
-    if (num == 14) {
-        value = {
-            blue: Number(action.value)
-        };
-        category = 'light';
-    }
-    if (num == 15) {
-        value = {
-            Options: Number(action.value)
-        }
-        category = 'lightRing';
-        console.log("action.value"+action.value);
-    }
-    updateData(category, value);
-    send(action.value);
 
-});
+
+// $('input,select').change(function (event) {
+//     // event.preventDefault();
+//     console.log("input, select");
+//     let action = event.target;
+//     let category = '';
+//     let num = Math.floor(Number(action.value) / 10);
+//     console.log(Number(action.value) / 10);
+//     let key = ''
+
+
+//     if (num == 12) {
+//         key = 'red';
+//         category = 'light';
+//     }
+//     if (num == 13) {
+//         key = 'green';
+//         category = 'light';
+//     }
+//     if (num == 14) {
+//         key = 'blue';
+//         category = 'light';
+//     }
+//     if (num == 15) {
+//         key = 'Options';
+//         category = 'lightRing';
+//     }
+//     updateData(category,{
+//             [key]: Number(action.value)
+//         });
+//     send(action.value);
+
+// });
 
 
 
-$('button').click(function (event) {
-    // event.preventDefault();
-    // lightStrip = !lightStrip;
-    let action = event.target
-    updateData('lightStrip', {
-        onoff: lightStrip
-    });
-    console.log("button");
-    send(action.value);
-});
+// $('button').click(function (event) {
+//     // event.preventDefault();
+//     // lightStrip = !lightStrip;
+//     let action = event.target
+//     updateData('lightStrip', {
+//         onoff: lightStrip
+//     });
+//     console.log("button");
+//     send(action.value);
+// });
 
-$('#door').click(function (event) {
-    // event.preventDefault();
-    let value = !doorOpen ? '111' : '110';
+// $('#door').click(function (event) {
+//     // event.preventDefault();
+//     let value = !doorOpen ? '111' : '110';
 
-    updateData('door', {
-        onoff: Boolean(doorOpen)
-    });
-    console.log("#door");
-    send(value);
-});
+//     updateData('door', {
+//         onoff: Boolean(doorOpen)
+//     });
+//     console.log("#door");
+//     send(value);
+// });
 
 function send(value) {
     $.get(
@@ -234,12 +230,12 @@ function peopleInduction() {
         onoff: true
     });
       updateData('light', {
-        blue: 0,
-        green: 0,
-        red: 0,
+        blue: 140,
+        green: 130,
+        red: 120,
     });
     console.log("peopleInduction");
-    changergfb();
+    changergb();
 
 
     //  var r=document.getElementById("red");
@@ -441,7 +437,6 @@ $(function () {
 function changergb() {
     if (r_color == 0 && g_color == 0 && b_color == 0) {
         document.getElementById('page').style.borderTop = "20px solid #32251B";
-
     } else {
         document.getElementById('page').style.borderTop = "20px solid rgb(" + r_color + "," + g_color +
             "," + b_color + ")";
