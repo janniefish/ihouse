@@ -101,62 +101,9 @@ function getData() {
 
 
 
-// $('input,select').change(function (event) {
-//     // event.preventDefault();
-//     console.log("input, select");
-//     let action = event.target;
-//     let category = '';
-//     let num = Math.floor(Number(action.value) / 10);
-//     console.log(Number(action.value) / 10);
-//     let key = ''
-
-
-//     if (num == 12) {
-//         key = 'red';
-//         category = 'light';
-//     }
-//     if (num == 13) {
-//         key = 'green';
-//         category = 'light';
-//     }
-//     if (num == 14) {
-//         key = 'blue';
-//         category = 'light';
-//     }
-//     if (num == 15) {
-//         key = 'Options';
-//         category = 'lightRing';
-//     }
-//     updateData(category,{
-//             [key]: Number(action.value)
-//         });
-//     send(action.value);
-
-// });
 
 
 
-// $('button').click(function (event) {
-//     // event.preventDefault();
-//     // lightStrip = !lightStrip;
-//     let action = event.target
-//     updateData('lightStrip', {
-//         onoff: lightStrip
-//     });
-//     console.log("button");
-//     send(action.value);
-// });
-
-// $('#door').click(function (event) {
-//     // event.preventDefault();
-//     let value = !doorOpen ? '111' : '110';
-
-//     updateData('door', {
-//         onoff: Boolean(doorOpen)
-//     });
-//     console.log("#door");
-//     send(value);
-// });
 
 function send(value) {
     $.get(
@@ -201,9 +148,7 @@ function changeOptions() {
 
 
 function peopleInduction() {
-    // if(document.getElementById("people_induction").style.cursor==default){
-    // 	document.getElementById("people_induction").style.cursor = "url('./images/cursor.cur'),auto";
-    // }
+
     document.getElementById("people_induction").style.cursor = "url('./images/cursor.cur'),auto";
     document.getElementById("door").src = "./images/opendoor.png";
     document.getElementById("fan").src = "./images/fan.png";
@@ -241,12 +186,6 @@ function peopleInduction() {
     console.log("peopleInduction");
     changergb();
 
-
-    //  var r=document.getElementById("red");
-    // console.log("r.value"+r.value);
-    //  r.value=120;		
-    // var r = $('#red');
-    // r.val()=120;
 }
 
 function peopleLeave() {
@@ -313,33 +252,6 @@ function changelightStrip() {
 }
 
 
-// function changeRedLed() {
-// 	if (!ledOpenred) {
-// 		document.getElementById("ledImage").src = "http://120.125.80.113/jpyuImages/image_52ared.gif";
-// 	} else {
-// 		document.getElementById("ledImage").src = "http://120.125.80.113/jpyuImages/image_52a.gif";
-// 	}
-// 	updateData('led', {
-// 		red: Boolean(ledOpenred)
-// 	});
-
-// 	ledOpenred = !ledOpenred;
-
-// }
-
-// function changeGreenLed() {
-// 	if (!ledOpengreen) {
-// 		document.getElementById("ledImage2").src = "http://120.125.80.113/jpyuImages/image_53agreen.gif";
-// 	} else {
-// 		document.getElementById("ledImage2").src = "http://120.125.80.113/jpyuImages/image_53a.gif";
-// 	}
-// 	updateData('led', {
-// 		green: Boolean(ledOpengreen)
-// 	});
-
-// 	ledOpengreen = !ledOpengreen;
-
-// }
 $(function () {
     var r = $('#red');
     r.on('mouseenter', function () {
