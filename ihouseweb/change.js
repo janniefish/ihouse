@@ -183,6 +183,10 @@ function peopleInduction() {
         green: 130,
         red: 120,
     });
+    updateData('lightRing',{
+        Options: Number(150)
+    });
+    changelightStrip();
     console.log("peopleInduction");
     changergb();
 
