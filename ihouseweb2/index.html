@@ -16,7 +16,6 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
 	<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
-	<script src="./change.js"></script>
 </head>
 
 <body>
@@ -37,9 +36,9 @@
 				<img alt="關門" src="./images/closedoor.png" id="door" onclick="changeDoor()" />
 			</div>
 			<div class="rgb">
-				紅色：<input type="range" class="range" id="red" name="action" min="120" max="129" value="120"><br>
-				綠色：<input type="range" class="range" id="green" name="action" min="130" max="139" value="130"><br>
-				藍色：<input type="range" class="range" id="blue" name="action" min="140" max="149" value="140">
+				紅色：<input type="range" class="range" id="red" name="action" min="120" max="129" value="120" onchange="changethreelight()"><br>
+				綠色：<input type="range" class="range" id="green" name="action" min="130" max="139" value="130" onchange="changethreelight()"><br>
+				藍色：<input type="range" class="range" id="blue" name="action" min="140" max="149" value="140" onchange="changethreelight()">
 			</div>
 			<img alt="開燈" src="./images/openlight.png" id="light" width="60px" onclick="changelight()" /><br>
 			<img alt="人體感應器" src="./images/people_induction.png" id="people_induction" onmouseover="peopleInduction()"
@@ -65,7 +64,7 @@
 						<div id="cli_on" class="box">+</div>
 						<div class="sbox1">
 							<p>點選選單更換燈環效果</p>
-							<select id="Options">
+							<select id="options" onchange="changeOptions()">
 								<option value="150">關閉 LED</option>
 								<!--ok-->
 								<option value="151">漸變循環</option>
@@ -93,6 +92,7 @@
 	</div>
 	<div id="bottom">
 	</div>
+	<script src="./change.js"></script>
 	<script>
 		window.onload = function () {
 			var combox = document.getElementById("common_box");
@@ -142,23 +142,23 @@
 			
 			//自動收縮
 			initime = setTimeout("cli_on.click()", 1000);
-			var rgbcolor = 0;
-			rgbcolor = ($('#red').val() - 120) * 10 + 5;
-			$('#red').css({
-				'background-image': '-webkit-linear-gradient(left ,#f22 0%,#f22 ' + rgbcolor +
-					'%,#fff ' + rgbcolor +
-					'%, #fff 100%)'
-			});
-			rgbcolor = ($('#green').val() - 130) * 10 + 5;
-			$('#green').css({
-				'background-image': '-webkit-linear-gradient(left ,rgb(34, 255, 170) 0%,rgb(34, 255, 170) ' +
-				rgbcolor + '%,#fff ' + rgbcolor + '%, #fff 100%)'
-			});
-			rgbcolor = ($('#blue').val() - 140) * 10 + 5;
-			$('#blue').css({
-				'background-image': '-webkit-linear-gradient(left ,rgb(34, 86, 255) 0%,rgb(34, 86, 255) ' +
-					rgbcolor + '%,#fff ' + rgbcolor + '%, #fff 100%)'
-			});
+			// var rgbcolor = 0;
+			// rgbcolor = ($('#red').val() - 120) * 10 + 5;
+			// $('#red').css({
+			// 	'background-image': '-webkit-linear-gradient(left ,#f22 0%,#f22 ' + rgbcolor +
+			// 		'%,#fff ' + rgbcolor +
+			// 		'%, #fff 100%)'
+			// });
+			// rgbcolor = ($('#green').val() - 130) * 10 + 5;
+			// $('#green').css({
+			// 	'background-image': '-webkit-linear-gradient(left ,rgb(34, 255, 170) 0%,rgb(34, 255, 170) ' +
+			// 	rgbcolor + '%,#fff ' + rgbcolor + '%, #fff 100%)'
+			// });
+			// rgbcolor = ($('#blue').val() - 140) * 10 + 5;
+			// $('#blue').css({
+			// 	'background-image': '-webkit-linear-gradient(left ,rgb(34, 86, 255) 0%,rgb(34, 86, 255) ' +
+			// 		rgbcolor + '%,#fff ' + rgbcolor + '%, #fff 100%)'
+			// });
 		}
 	</script>
 </body>
