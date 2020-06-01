@@ -56,22 +56,22 @@ function getData() {
                     document.getElementById('red').value = doc.data().red;
                     document.getElementById('green').value = doc.data().green;
                     document.getElementById('blue').value = doc.data().blue;
-                    
-                    let rgb= ['#red','#green','#blue'];
-                    let rgb_color= [0,0,0];
+
+                    let rgb = ['#red', '#green', '#blue'];
+                    let rgb_color = [0, 0, 0];
                     let color = [
                         '#f22 0%,#f22 ',
-                        'rgb(34, 255, 170) 0%,rgb(34, 255, 170) ' ,
-                        'rgb(34, 86, 255) 0%,rgb(34, 86, 255) ' , 
+                        'rgb(34, 255, 170) 0%,rgb(34, 255, 170) ',
+                        'rgb(34, 86, 255) 0%,rgb(34, 86, 255) ',
                     ]
-                    rgb.forEach((value, index) =>{
-                        let rgbcolor = ($(value).val() - (120 + index * 10) ) * 10 + 5;
-                        rgb_color[index]=(($(value).val() % 100) % 10) * (255 / 9);
-                       
+                    rgb.forEach((value, index) => {
+                        let rgbcolor = ($(value).val() - (120 + index * 10)) * 10 + 5;
+                        rgb_color[index] = (($(value).val() % 100) % 10) * (255 / 9);
+
                         $(value).css({
-                            'background-image': '-webkit-linear-gradient(left ,'+color[index]+rgbcolor+'%,#fff '+rgbcolor+'%, #fff 100%)'
+                            'background-image': '-webkit-linear-gradient(left ,' + color[index] + rgbcolor + '%,#fff ' + rgbcolor + '%, #fff 100%)'
                         });
-                        
+
                     });
                     r_color = rgb_color[0];
                     g_color = rgb_color[1];
@@ -90,7 +90,7 @@ function getData() {
                     changelightStrip();
                     break;
             }
-            
+
 
 
         });
@@ -101,61 +101,61 @@ function getData() {
 
 
 $('input,select').change(function (event) {
-        // event.preventDefault();
-        console.log("input, select");
-        let action = event.target;
-        let category = '';
-        let num = Math.floor(Number(action.value) / 10);
-        console.log(Number(action.value) / 10);
-        let key = ''
-   
-   
-        if (num == 12) {
-            key = 'red';
-            category = 'light';
-        }
-        if (num == 13) {
-            key = 'green';
-            category = 'light';
-        }
-        if (num == 14) {
-            key = 'blue';
-            category = 'light';
-        }
-        if (num == 15) {
-            key = 'Options';
-            category = 'lightRing';
-        }
-        updateData(category,{
-                [key]: Number(action.value)
-            });
-        send(action.value);
-   
+    // event.preventDefault();
+    console.log("input, select");
+    let action = event.target;
+    let category = '';
+    let num = Math.floor(Number(action.value) / 10);
+    console.log(Number(action.value) / 10);
+    let key = ''
+
+
+    if (num == 12) {
+        key = 'red';
+        category = 'light';
+    }
+    if (num == 13) {
+        key = 'green';
+        category = 'light';
+    }
+    if (num == 14) {
+        key = 'blue';
+        category = 'light';
+    }
+    if (num == 15) {
+        key = 'Options';
+        category = 'lightRing';
+    }
+    updateData(category, {
+        [key]: Number(action.value)
     });
-   
-   
-   
-    $('button').click(function (event) {
-        // event.preventDefault();
-        // lightStrip = !lightStrip;
-        let action = event.target
-        updateData('lightStrip', {
-            onoff: lightStrip
-        });
-        console.log("button");
-        send(action.value);
+    send(action.value);
+
+});
+
+
+
+$('button').click(function (event) {
+    // event.preventDefault();
+    // lightStrip = !lightStrip;
+    let action = event.target
+    updateData('lightStrip', {
+        onoff: lightStrip
     });
-   
-    $('#door').click(function (event) {
-        // event.preventDefault();
-        let value = !doorOpen ? '111' : '110';
-   
-        updateData('door', {
-            onoff: Boolean(doorOpen)
-        });
-        console.log("#door");
-        send(value);
+    console.log("button");
+    send(action.value);
+});
+
+$('#door').click(function (event) {
+    // event.preventDefault();
+    let value = !doorOpen ? '111' : '110';
+
+    updateData('door', {
+        onoff: Boolean(doorOpen)
     });
+    console.log("#door");
+    send(value);
+});
 
 
 
@@ -163,8 +163,8 @@ $('input,select').change(function (event) {
 function send(value) {
     $.get(
         '/action/', {
-        'action': value
-    },
+            'action': value
+        },
         function (data) {
 
         }
@@ -172,7 +172,7 @@ function send(value) {
 }
 
 function changethreelight() {
-   
+
     console.log("changethreelight");
     var b = $('#blue');
     var g = $('#green');
@@ -189,16 +189,16 @@ function changeOptions() {
     // event.preventDefault();
     console.log("#options");
     //let action = event.target;
-    let event=document.getElementById('options').value;
+    let event = document.getElementById('options').value;
 
     value = {
         Options: Number(event)
     }
     category = 'lightRing';
-  
+
     updateData(category, value);
-   send(event);
-   
+    send(event);
+
 }
 
 
@@ -228,20 +228,20 @@ function peopleInduction() {
         onoff: true
     });
     updateData('fan', {
-        onoff:  true
+        onoff: true
     });
     updateData('lightOpen', {
         onoff: true
     });
-      updateData('light', {
+    updateData('light', {
         blue: 140,
         green: 130,
         red: 120,
     });
-    updateData('lightRing',{
+    updateData('lightRing', {
         Options: Number(150)
     });
-    lightStrip=false;
+    lightStrip = false;
     changelightStrip();
     console.log("peopleInduction");
     changergb();
@@ -250,7 +250,7 @@ function peopleInduction() {
 
 function peopleLeave() {
     document.getElementById("door").src = "./images/closedoor.png";
-    
+
 }
 
 function changeDoor() {
@@ -290,7 +290,7 @@ function changelight() {
         document.getElementById("light").src = "./images/closelight.png";
         document.getElementById("page").style.backgroundImage = "url('./images/house_black.png')";
     }
-  
+
     lightOpen = !lightOpen;
     updateData('lightOpen', {
         onoff: Boolean(!lightOpen)
@@ -322,13 +322,13 @@ $(function () {
             r_color = ((r.val() % 100) % 10) * (255 / 9);
             console.log("val=" + p);
             bg(p);
-    
+
         });
         r.on('mousemove', function () {
             p = (r.val() - 120) * 10 + 5;
             r_color = ((r.val() % 100) % 10) * (255 / 9);
             bg(p);
-         
+
         });
 
     });
@@ -356,16 +356,16 @@ $(function () {
             g_color = ((g.val() % 100) % 10) * (255 / 9);
             console.log("val=" + p);
             bg(p);
-           
+
         });
         g.on('mousemove', function () {
             p = (g.val() - 130) * 10 + 5;
             g_color = ((g.val() % 100) % 10) * (255 / 9);
             bg(p);
-           
+
         });
-      
-  
+
+
     });
 
     function bg(n) {
@@ -387,16 +387,16 @@ $(function () {
             b_color = ((b.val() % 100) % 10) * (255 / 9);
             console.log("val=" + b.val());
             bg(p);
-           
+
         });
         b.on('mousemove', function () {
             p = (b.val() - 140) * 10 + 5;
             b_color = ((b.val() % 100) % 10) * (255 / 9);
             bg(p);
-         
+
         });
 
-      
+
     });
 
     function bg(n) {
@@ -418,10 +418,9 @@ function changergb() {
             "," + b_color + ")";
 
     }
-   
+
 
     console.log("r:" + r_color);
     console.log("g:" + g_color);
     console.log("b:" + b_color);
 }
-
