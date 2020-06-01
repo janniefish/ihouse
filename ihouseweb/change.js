@@ -1,8 +1,10 @@
+
 let doorOpen = false;
 let ledOpenred = false;
 let ledOpengreen = false;
 let fanOpen = false;
 let lightOpen = true;
+let lightRing = false;
 let lightStrip = false;
 var r_color = 0;
 var g_color = 0;
@@ -56,22 +58,22 @@ function getData() {
                     document.getElementById('red').value = doc.data().red;
                     document.getElementById('green').value = doc.data().green;
                     document.getElementById('blue').value = doc.data().blue;
-                    
-                    let rgb= ['#red','#green','#blue'];
-                    let rgb_color= [0,0,0];
+
+                    let rgb = ['#red', '#green', '#blue'];
+                    let rgb_color = [0, 0, 0];
                     let color = [
                         '#f22 0%,#f22 ',
-                        'rgb(34, 255, 170) 0%,rgb(34, 255, 170) ' ,
-                        'rgb(34, 86, 255) 0%,rgb(34, 86, 255) ' , 
+                        'rgb(34, 255, 170) 0%,rgb(34, 255, 170) ',
+                        'rgb(34, 86, 255) 0%,rgb(34, 86, 255) ',
                     ]
-                    rgb.forEach((value, index) =>{
-                        let rgbcolor = ($(value).val() - (120 + index * 10) ) * 10 + 5;
-                        rgb_color[index]=(($(value).val() % 100) % 10) * (255 / 9);
-                       
+                    rgb.forEach((value, index) => {
+                        let rgbcolor = ($(value).val() - (120 + index * 10)) * 10 + 5;
+                        rgb_color[index] = (($(value).val() % 100) % 10) * (255 / 9);
+
                         $(value).css({
-                            'background-image': '-webkit-linear-gradient(left ,'+color[index]+rgbcolor+'%,#fff '+rgbcolor+'%, #fff 100%)'
+                            'background-image': '-webkit-linear-gradient(left ,' + color[index] + rgbcolor + '%,#fff ' + rgbcolor + '%, #fff 100%)'
                         });
-                        
+
                     });
                     r_color = rgb_color[0];
                     g_color = rgb_color[1];
@@ -90,7 +92,7 @@ function getData() {
                     changelightStrip();
                     break;
             }
-            
+
 
 
         });
@@ -101,61 +103,61 @@ function getData() {
 
 
 $('input,select').change(function (event) {
-        // event.preventDefault();
-        console.log("input, select");
-        let action = event.target;
-        let category = '';
-        let num = Math.floor(Number(action.value) / 10);
-        console.log(Number(action.value) / 10);
-        let key = ''
-   
-   
-        if (num == 12) {
-            key = 'red';
-            category = 'light';
-        }
-        if (num == 13) {
-            key = 'green';
-            category = 'light';
-        }
-        if (num == 14) {
-            key = 'blue';
-            category = 'light';
-        }
-        if (num == 15) {
-            key = 'Options';
-            category = 'lightRing';
-        }
-        updateData(category,{
-                [key]: Number(action.value)
-            });
-        send(action.value);
-   
+    // event.preventDefault();
+    console.log("input, select");
+    let action = event.target;
+    let category = '';
+    let num = Math.floor(Number(action.value) / 10);
+    console.log(Number(action.value) / 10);
+    let key = ''
+
+
+    if (num == 12) {
+        key = 'red';
+        category = 'light';
+    }
+    if (num == 13) {
+        key = 'green';
+        category = 'light';
+    }
+    if (num == 14) {
+        key = 'blue';
+        category = 'light';
+    }
+    if (num == 15) {
+        key = 'Options';
+        category = 'lightRing';
+    }
+    updateData(category, {
+        [key]: Number(action.value)
     });
-   
-   
-   
-    $('button').click(function (event) {
-        // event.preventDefault();
-        // lightStrip = !lightStrip;
-        let action = event.target
-        updateData('lightStrip', {
-            onoff: lightStrip
-        });
-        console.log("button");
-        send(action.value);
+    send(action.value);
+
+});
+
+
+
+$('button').click(function (event) {
+    // event.preventDefault();
+    // lightStrip = !lightStrip;
+    let action = event.target
+    updateData('lightStrip', {
+        onoff: lightStrip
     });
-   
-    $('#door').click(function (event) {
-        // event.preventDefault();
-        let value = !doorOpen ? '111' : '110';
-   
-        updateData('door', {
-            onoff: Boolean(doorOpen)
-        });
-        console.log("#door");
-        send(value);
+    console.log("button");
+    send(action.value);
+});
+
+$('#door').click(function (event) {
+    // event.preventDefault();
+    let value = !doorOpen ? '111' : '110';
+
+    updateData('door', {
+        onoff: Boolean(doorOpen)
     });
+    console.log("#door");
+    send(value);
+});
 
 
 
@@ -172,7 +174,7 @@ function send(value) {
 }
 
 function changethreelight() {
-   
+
     console.log("changethreelight");
     var b = $('#blue');
     var g = $('#green');
@@ -182,6 +184,9 @@ function changethreelight() {
         green: Number(g.val()),
         red: Number(r.val()),
     });
+    send(b.val());
+    send(g.val());
+    send(r.val());
 }
 
 
@@ -189,16 +194,16 @@ function changeOptions() {
     // event.preventDefault();
     console.log("#options");
     //let action = event.target;
-    let event=document.getElementById('options').value;
+    let event = document.getElementById('options').value;
 
     value = {
         Options: Number(event)
     }
     category = 'lightRing';
-  
+
     updateData(category, value);
-   send(event);
-   
+    send(event);
+
 }
 
 
@@ -228,23 +233,31 @@ function peopleInduction() {
         onoff: true
     });
     updateData('fan', {
-        onoff:  true
+        onoff: true
     });
     updateData('lightOpen', {
         onoff: true
     });
-      updateData('light', {
+    updateData('light', {
         blue: 140,
         green: 130,
         red: 120,
     });
-    updateData('lightRing',{
+    document.getElementById('options').value=150;
+    
+    updateData('lightRing', {
         Options: Number(150)
     });
-    lightStrip=false;
+    lightStrip = false;
     changelightStrip();
     console.log("peopleInduction");
     changergb();
+    send(110);
+    send(120);
+    send(130);
+    send(140);
+    send(150);
+    
 
 }
 
@@ -253,16 +266,24 @@ function peopleLeave() {
     
 }
 
+function changering() {
+    openlightRing()
+    lightRing = !lightRing;
+}
+
 function changeDoor() {
     console.log(document.getElementById("door").src);
     if (!doorOpen) {
         document.getElementById("door").src = "./images/opendoor.png";
+        send('111');
     } else {
         document.getElementById("door").src = "./images/closedoor.png";
+        send('110');
     }
     updateData('door', {
         onoff: Boolean(doorOpen)
     });
+
 
     doorOpen = !doorOpen;
 }
@@ -290,7 +311,7 @@ function changelight() {
         document.getElementById("light").src = "./images/closelight.png";
         document.getElementById("page").style.backgroundImage = "url('./images/house_black.png')";
     }
-  
+
     lightOpen = !lightOpen;
     updateData('lightOpen', {
         onoff: Boolean(!lightOpen)
@@ -308,7 +329,7 @@ function changelightStrip() {
         onoff: Boolean(lightStrip)
     });
     lightStrip = !lightStrip;
-
+    send('160');
 }
 
 
@@ -322,13 +343,13 @@ $(function () {
             r_color = ((r.val() % 100) % 10) * (255 / 9);
             console.log("val=" + p);
             bg(p);
-    
+
         });
         r.on('mousemove', function () {
             p = (r.val() - 120) * 10 + 5;
             r_color = ((r.val() % 100) % 10) * (255 / 9);
             bg(p);
-         
+
         });
 
     });
@@ -356,16 +377,16 @@ $(function () {
             g_color = ((g.val() % 100) % 10) * (255 / 9);
             console.log("val=" + p);
             bg(p);
-           
+
         });
         g.on('mousemove', function () {
             p = (g.val() - 130) * 10 + 5;
             g_color = ((g.val() % 100) % 10) * (255 / 9);
             bg(p);
-           
+
         });
-      
-  
+
+
     });
 
     function bg(n) {
@@ -387,16 +408,16 @@ $(function () {
             b_color = ((b.val() % 100) % 10) * (255 / 9);
             console.log("val=" + b.val());
             bg(p);
-           
+
         });
         b.on('mousemove', function () {
             p = (b.val() - 140) * 10 + 5;
             b_color = ((b.val() % 100) % 10) * (255 / 9);
             bg(p);
-         
+
         });
 
-      
+
     });
 
     function bg(n) {
@@ -418,10 +439,51 @@ function changergb() {
             "," + b_color + ")";
 
     }
-   
+
 
     console.log("r:" + r_color);
     console.log("g:" + g_color);
     console.log("b:" + b_color);
+}
+
+
+var combox = document.getElementById("common_box");
+var cli_on = document.getElementById("cli_on");
+var timer = null,
+    initime = null,
+    r_len = 0;
+function openlightRing() {
+    /*
+    combox.style.right = flag?'-270px':0;
+    flag = !flag;
+    */
+    clearTimeout(initime);
+    if (lightRing) {
+        r_len = 0;
+        timer = setInterval(slideright, 10);
+    } else {
+        r_len = -270;
+        timer = setInterval(slideleft, 10);
+    }
+}
+//展開
+function slideright() {
+    if (r_len <= -270) {
+        clearInterval(timer);
+        return false;
+    } else {
+        r_len -= 5;
+        combox.style.right = r_len + 'px';
+    }
+}
+//收縮
+function slideleft() {
+    if (r_len >= 0) {
+        clearInterval(timer);
+        return false;
+    } else {
+        r_len += 5;
+        combox.style.right = r_len + 'px';
+    }
 }
 
