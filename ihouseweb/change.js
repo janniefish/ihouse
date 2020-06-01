@@ -1,4 +1,3 @@
-
 let doorOpen = false;
 let ledOpenred = false;
 let ledOpengreen = false;
