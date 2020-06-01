@@ -100,7 +100,62 @@ function getData() {
 }
 
 
-
+$('input,select').change(function (event) {
+        // event.preventDefault();
+        console.log("input, select");
+        let action = event.target;
+        let category = '';
+        let num = Math.floor(Number(action.value) / 10);
+        console.log(Number(action.value) / 10);
+        let key = ''
+   
+   
+        if (num == 12) {
+            key = 'red';
+            category = 'light';
+        }
+        if (num == 13) {
+            key = 'green';
+            category = 'light';
+        }
+        if (num == 14) {
+            key = 'blue';
+            category = 'light';
+        }
+        if (num == 15) {
+            key = 'Options';
+            category = 'lightRing';
+        }
+        updateData(category,{
+                [key]: Number(action.value)
+            });
+        send(action.value);
+   
+    });
+   
+   
+   
+    $('button').click(function (event) {
+        // event.preventDefault();
+        // lightStrip = !lightStrip;
+        let action = event.target
+        updateData('lightStrip', {
+            onoff: lightStrip
+        });
+        console.log("button");
+        send(action.value);
+    });
+   
+    $('#door').click(function (event) {
+        // event.preventDefault();
+        let value = !doorOpen ? '111' : '110';
+   
+        updateData('door', {
+            onoff: Boolean(doorOpen)
+        });
+        console.log("#door");
+        send(value);
+    });
 
 
 
@@ -183,6 +238,11 @@ function peopleInduction() {
         green: 130,
         red: 120,
     });
+    updateData('lightRing',{
+        Options: Number(150)
+    });
+    lightStrip=false;
+    changelightStrip();
     console.log("peopleInduction");
     changergb();
 
