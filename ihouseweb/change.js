@@ -186,6 +186,7 @@ function peopleInduction() {
     updateData('lightRing',{
         Options: Number(150)
     });
+    lightStrip=false;
     changelightStrip();
     console.log("peopleInduction");
     changergb();
