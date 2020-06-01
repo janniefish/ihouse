@@ -1,8 +1,10 @@
+
 let doorOpen = false;
 let ledOpenred = false;
 let ledOpengreen = false;
 let fanOpen = false;
 let lightOpen = true;
+let lightRing = false;
 let lightStrip = false;
 var r_color = 0;
 var g_color = 0;
@@ -182,6 +184,9 @@ function changethreelight() {
         green: Number(g.val()),
         red: Number(r.val()),
     });
+    send(b.val());
+    send(g.val());
+    send(r.val());
 }
 
 
@@ -245,6 +250,12 @@ function peopleInduction() {
     changelightStrip();
     console.log("peopleInduction");
     changergb();
+    send(110);
+    send(120);
+    send(130);
+    send(140);
+    send(150);
+    
 
 }
 
@@ -253,16 +264,24 @@ function peopleLeave() {
 
 }
 
+function changering() {
+    openlightRing()
+    lightRing = !lightRing;
+}
+
 function changeDoor() {
     console.log(document.getElementById("door").src);
     if (!doorOpen) {
         document.getElementById("door").src = "./images/opendoor.png";
+        send('111');
     } else {
         document.getElementById("door").src = "./images/closedoor.png";
+        send('110');
     }
     updateData('door', {
         onoff: Boolean(doorOpen)
     });
+
 
     doorOpen = !doorOpen;
 }
@@ -308,7 +327,7 @@ function changelightStrip() {
         onoff: Boolean(lightStrip)
     });
     lightStrip = !lightStrip;
-
+    send('160');
 }
 
 
@@ -423,4 +442,50 @@ function changergb() {
     console.log("r:" + r_color);
     console.log("g:" + g_color);
     console.log("b:" + b_color);
+
 }
+
+
+
+
+var combox = document.getElementById("common_box");
+var cli_on = document.getElementById("cli_on");
+var timer = null,
+    initime = null,
+    r_len = 0;
+function openlightRing() {
+    /*
+    combox.style.right = flag?'-270px':0;
+    flag = !flag;
+    */
+    clearTimeout(initime);
+    if (lightRing) {
+        r_len = 0;
+        timer = setInterval(slideright, 10);
+    } else {
+        r_len = -270;
+        timer = setInterval(slideleft, 10);
+    }
+}
+//展開
+function slideright() {
+    if (r_len <= -270) {
+        clearInterval(timer);
+        return false;
+    } else {
+        r_len -= 5;
+        combox.style.right = r_len + 'px';
+    }
+}
+//收縮
+function slideleft() {
+    if (r_len >= 0) {
+        clearInterval(timer);
+        return false;
+    } else {
+        r_len += 5;
+        combox.style.right = r_len + 'px';
+    }
+}
+
+
