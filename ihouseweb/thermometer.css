@@ -9,6 +9,7 @@
   color: white;
 } */
 
+
 .wrapper {
   margin: auto;
   display: flex;
@@ -16,19 +17,20 @@
   align-items: center;
   
 }
-
+/* 
 p {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
 
-.info {
+} */
+
+/* .info {
   opacity: 0.2;
   margin: 0;
   text-align: center;
-}
+} */
 
 .termometer {
   width: 10px;
@@ -38,7 +40,7 @@ p {
   border: 9px solid #2a2a2e;
   border-radius: 20px;
   z-index: 1;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .termometer:before, .termometer:after {
   position: absolute;
@@ -66,6 +68,7 @@ p {
   height: 59%;
   top: 20%;
   width: 50%;
+  
 }
 .termometer .graduations, .termometer .graduations:before {
   position: absolute;

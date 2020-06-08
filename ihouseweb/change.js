@@ -158,6 +158,33 @@ function getData() {
 //     send(value);
 // });
 
+const units = {
+    Celcius: "°C",
+    Fahrenheit: "°F" };
+  
+  
+  const config = {
+    minTemp: -20,
+    maxTemp: 50,
+    unit: "Celcius" };
+  
+  const temperature = document.querySelector(".temperature");
+  const humidity = document.querySelector(".humidity .temperature");
+  const Tdegree = 27;
+  const Hdegree = 28;
+  function setTemperature() {
+    temperature.style.height = (Tdegree - config.minTemp) / (config.maxTemp - config.minTemp) * 100 + "%";
+    temperature.dataset.value = Tdegree + units[config.unit];
+  }
+
+  function setHumidity() {
+    humidity.style.height = (Hdegree - config.minTemp) / (config.maxTemp - config.minTemp) * 100 + "%";
+    humidity.dataset.value = Hdegree + units[config.unit];
+  }
+  
+
+  setTimeout(setTemperature, 1000);
+  setTimeout(setHumidity, 1000);
 
 
 
