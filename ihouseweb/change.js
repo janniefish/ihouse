@@ -160,26 +160,31 @@ function getData() {
 
 const units = {
     Celcius: "°C",
-    Fahrenheit: "°F" };
+    degree: "%" };
   
   
   const config = {
     minTemp: -20,
     maxTemp: 50,
     unit: "Celcius" };
+
+const Hconfig = {
+    minTemp: 0,
+    maxTemp: 100,
+    unit: "degree" };
   
   const temperature = document.querySelector(".temperature");
   const humidity = document.querySelector(".humidity .temperature");
   const Tdegree = 27;
-  const Hdegree = 28;
+  const Hdegree = 87;
   function setTemperature() {
     temperature.style.height = (Tdegree - config.minTemp) / (config.maxTemp - config.minTemp) * 100 + "%";
     temperature.dataset.value = Tdegree + units[config.unit];
   }
 
   function setHumidity() {
-    humidity.style.height = (Hdegree - config.minTemp) / (config.maxTemp - config.minTemp) * 100 + "%";
-    humidity.dataset.value = Hdegree + units[config.unit];
+    humidity.style.height = (Hdegree - Hconfig.minTemp) / (Hconfig.maxTemp - Hconfig.minTemp) * 100 + "%";
+    humidity.dataset.value = Hdegree + units[Hconfig.unit];
   }
   
 
