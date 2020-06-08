@@ -111,12 +111,17 @@
 		line-height: 180px;
 	}
 
+	.sbox1 {
+		padding-bottom: 10px;
+		padding-top: 5px;
+	}
+
 	.sbox2 {
 		margin-top: 5px;
 		margin-bottom: 5px;
 	}
 
-	#options{
+	#options {
 		margin-left: 10px;
 	}
 
@@ -125,14 +130,13 @@
 	/*********************************************************************************/
 	#lightStrip {
 		cursor: pointer;
-		/* margin-bottom: 24px; */
 		margin-left: 10px;
 		margin-right: 10px;
 		-moz-appearance: none;
 		-webkit-appearance: none;
 		-ms-appearance: none;
 		appearance: none;
-		background-color: #f6755e; 
+		background-color: #f6755e;
 		border-radius: 4px;
 		border: 0;
 		color: #ffffff;
@@ -150,11 +154,8 @@
 	/*********************************************************************************/
 	/* Dropdown Style                                                                */
 	/*********************************************************************************/
-	#Options {
+	#options {
 		cursor: pointer;
-		margin-left: 10px;
-		margin-right: 10px;
-		margin-bottom: 15px;
 		text-align: center;
 		border: 1.5px solid;
 		border-color: #84C1FF;
@@ -172,11 +173,11 @@
 	}
 
 	/* IE隱藏箭頭*/
-	#Options::-ms-expand {
+	#options::-ms-expand {
 		display: none;
 	}
 
-	#Options:focus {
+	#options:focus {
 		box-shadow: 0 0 5px 2px #467BF4;
 	}
 
@@ -312,11 +313,12 @@
 	/*********************************************************************************/
 	/* Top                                                                           */
 	/*********************************************************************************/
-	
-	#top{
+
+	#top {
 		width: 1200px;
 		height: 60px;
 	}
+
 	/*********************************************************************************/
 	/* Content                                                                       */
 	/*********************************************************************************/
@@ -360,7 +362,7 @@
 	/*********************************************************************************/
 	/* Footer                                                                        */
 	/*********************************************************************************/
-	
+
 	footer#bottom {
 		/* height: 100px; */
 		overflow: hidden;
