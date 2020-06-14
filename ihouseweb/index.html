@@ -38,15 +38,38 @@
 				<h2>Welcome to Myhouse</h2>
 			</div> -->
 			<img alt="關門" src="./images/closedoor.png" id="door" onclick="changeDoor()" />
-			<div class="rgb">
+			<!-- <div class="wall"> -->
+			<div class="wall">
 				紅色：<input type="range" class="range" id="red" name="action" min="120" max="129" value="120"
 					onchange="changethreelight()"><br>
 				綠色：<input type="range" class="range" id="green" name="action" min="130" max="139" value="130"
 					onchange="changethreelight()"><br>
 				藍色：<input type="range" class="range" id="blue" name="action" min="140" max="149" value="140"
 					onchange="changethreelight()">
-			</div>
+					<div class="TH">
+						<div class="wrapper">
+							<div class="termometer">
+								<div class="temperature" style="height:0" data-value="0°C"></div>
+								<div class="graduations"></div>
 			
+							</div>
+							<div>溫度</div>
+						</div>
+						<div class="humidity">
+							<div class="termometer">
+								<div class="temperature" style="height:0" data-value="0°C"></div>
+								<div class="graduations"></div>
+							</div>
+							<div>濕度</div>
+						</div>	
+					</div>
+					</div>
+					
+
+			<!-- </div> -->
+
+			
+
 			<img alt="開燈" src="./images/openlight.png" id="light" width="60px" onclick="changelight()" /><br>
 			<img alt="人體感應器" src="./images/people_induction.png" id="people_induction" onmouseover="peopleInduction()"
 				onmouseout="peopleLeave()" />
@@ -64,25 +87,8 @@
 			<div id="stwo-col">
 				<div class="sbox">
 					<!-- <img alt="時鐘" src="./images/clock.png" id="clock" width="90px" /><br/> -->
-					
 					<img alt="燈環" src="./images/ring_original.png" id="ring" onclick="changering()" />
 					<img alt="電風扇" src="./images/fan.png" id="fan" onclick="changefan()" />
-					<div class="wrapper">	
-						<div class="termometer">
-							<div class="temperature" style="height:0" data-value="0°C"></div>
-							<div class="graduations"></div>
-							
-						</div>
-						<div>溫度</div>
-						
-					</div>
-					<div class="humidity">	
-						<div class="termometer">
-							<div class="temperature" style="height:0" data-value="0°C"></div>
-							<div class="graduations"></div>	
-						</div>
-						<div>濕度</div>
-					</div>
 					<div id="common_box" class="box">
 						<div id="cli_on" class="box">+</div>
 						<div class="sbox1">
