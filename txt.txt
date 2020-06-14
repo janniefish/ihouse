@@ -1,4 +1,15 @@
-@import url("https://fonts.googleapis.com/css?family=Jaldi&display=swap");
+					<div class="humidity">
+						<div class="termometer">
+							<div class="temperature" style="height:0" data-value="0°C"></div>
+							<div class="graduations"></div>
+						</div>
+						<div>濕度</div>
+					</div>
+
+
+
+
+                    @import url("https://fonts.googleapis.com/css?family=Jaldi&display=swap");
 /* body {
   display: flex;
   height: 100vh;
@@ -9,26 +20,14 @@
   color: white;
 } */
 
-.TH {
-  margin-top: 40px;
-  /* float: right; */
 
-}
-
-.wrapper {
-  /* margin: auto;
+/* .wrapper {
+  margin: auto;
   display: flex;
   flex-direction: column;
-  align-items: center; */
-  float: left;
-  margin-left: 40px;
+  align-items: center;
 
-}
-
-.humidity {
-  float: right;
-  margin-right: 40px;
-}
+} */
 
 /* 
 p {
@@ -53,7 +52,7 @@ p {
   border: 9px solid #2a2a2e;
   border-radius: 20px;
   z-index: 1;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .termometer:before,
@@ -322,4 +321,10 @@ p {
 
 .range input[type="range"]:disabled::-ms-fill-upper {
   cursor: not-allowed;
+}
+
+.TH{
+  margin-top: 30px;
+  float: right;
+
 }

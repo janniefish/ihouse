@@ -30,7 +30,7 @@
 	<div id="page" class="container">
 		<!-- 上半部 -->
 		<div id="top">
-
+			<img id="lightstrip_img" alt="燈條" src="./images/lightstrip.png">
 		</div>
 		<!-- 左半部 -->
 		<div id="content">
@@ -46,29 +46,29 @@
 					onchange="changethreelight()"><br>
 				藍色：<input type="range" class="range" id="blue" name="action" min="140" max="149" value="140"
 					onchange="changethreelight()">
-					<div class="TH">
-						<div class="wrapper">
-							<div class="termometer">
-								<div class="temperature" style="height:0" data-value="0°C"></div>
-								<div class="graduations"></div>
-			
-							</div>
-							<div>溫度</div>
+				<div class="TH">
+					<div class="wrapper">
+						<div class="termometer">
+							<div class="temperature" style="height:0" data-value="0°C"></div>
+							<div class="graduations"></div>
+
 						</div>
-						<div class="humidity">
-							<div class="termometer">
-								<div class="temperature" style="height:0" data-value="0°C"></div>
-								<div class="graduations"></div>
-							</div>
-							<div>濕度</div>
-						</div>	
+						<div>溫度</div>
 					</div>
+					<div class="humidity">
+						<div class="termometer">
+							<div class="temperature" style="height:0" data-value="0°C"></div>
+							<div class="graduations"></div>
+						</div>
+						<div>濕度</div>
 					</div>
-					
+				</div>
+			</div>
+
 
 			<!-- </div> -->
 
-			
+
 
 			<img alt="開燈" src="./images/openlight.png" id="light" width="60px" onclick="changelight()" /><br>
 			<img alt="人體感應器" src="./images/people_induction.png" id="people_induction" onmouseover="peopleInduction()"
