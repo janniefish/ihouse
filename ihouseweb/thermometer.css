@@ -130,7 +130,7 @@
   left: 100%;
   top: calc(-1em / 2.2 + 5px);
 }
-
+/* 
 .playground {
   font-size: 1.1em;
 }
@@ -149,9 +149,9 @@
   padding: 0px 5px;
   border-bottom: 2px solid transparent;
   transition: all 0.2s ease-in-out;
-}
+} */
 
-.playground .range input[type="text"]:focus {
+/* .playground .range input[type="text"]:focus {
   border-color: #3dcadf;
   outline: none;
 }
@@ -168,9 +168,9 @@
 
 .playground .unit:hover {
   cursor: pointer;
-}
+} */
 
-.range input[type="range"] {
+/* .range input[type="range"] {
   -webkit-appearance: none;
   background: transparent;
   margin: 5.5px 0;
@@ -312,4 +312,4 @@
 
 .range input[type="range"]:disabled::-ms-fill-upper {
   cursor: not-allowed;
-}
+} */
