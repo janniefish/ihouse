@@ -30,7 +30,7 @@
 	<div id="page" class="container">
 		<!-- 上半部 -->
 		<div id="top">
-			<img id="lightstrip_img" alt="燈條" src="./images/lightstrip.png">
+			<img id="lightstrip_img" alt="燈條" src="./images/lightstrip.png" onclick="changelightStrip()">
 		</div>
 		<!-- 左半部 -->
 		<div id="content">
@@ -49,18 +49,18 @@
 				<div class="TH">
 					<div class="wrapper">
 						<div class="termometer">
-							<div class="temperature" style="height:0" data-value="0°C"></div>
+							<div class="temperature" id="temperature" style="height:0" data-value="0°C"></div>
 							<div class="graduations"></div>
 
 						</div>
-						<div>溫度</div>
+						<div class="text">溫度</div>
 					</div>
 					<div class="humidity">
 						<div class="termometer">
-							<div class="temperature" style="height:0" data-value="0°C"></div>
+							<div class="temperature" id="humidity" style="height:0" data-value="0°C"></div>
 							<div class="graduations"></div>
 						</div>
-						<div>濕度</div>
+						<div class="text">濕度</div>
 					</div>
 				</div>
 			</div>

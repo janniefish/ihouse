@@ -349,10 +349,12 @@ function changelight() {
 
 function changelightStrip() {
     console.log(document.getElementById("lightStrip").innerText);
-    if (lightStrip) {
-        document.getElementById("lightStrip").innerText = "燈條發亮";
-    } else {
+    if (!lightStrip) {
         document.getElementById("lightStrip").innerText = "燈條關閉";
+        document.getElementById("lightstrip_img").src="./images/lightstrip_open.gif";
+    } else {
+        document.getElementById("lightStrip").innerText = "燈條發亮";
+        document.getElementById("lightstrip_img").src="./images/lightstrip.png";
     }
     updateData('lightStrip', {
         onoff: Boolean(lightStrip)

@@ -75,6 +75,7 @@
 	img#lightstrip_img {
 		width: 410px;
 		float: right;
+		cursor: pointer;
 	}
 	/* img {
 		transform: scale(1, 1);
