@@ -185,13 +185,27 @@ const units = {
   
  
   function setTemperature() {
+    if(temperature.dataset.value != Tdegree + units[Hconfig.unit]){
+        Tdegree=temperature.dataset.value.substring(0, 3);
+        updateData('temperature', {
+            degree: Tdegree,
+        });
+    }
     temperature.style.height = (Tdegree - config.minTemp) / (config.maxTemp - config.minTemp) * 100 + "%";
     temperature.dataset.value = Tdegree + units[config.unit];
+
   }
 
   function setHumidity() {
+    if(humidity.dataset.value != Hdegree + units[Hconfig.unit]){
+        Hdegree=humidity.dataset.value.substring(0, 3);
+        updateData('humidity', {
+            degree: Hdegree,
+        });
+    }
     humidity.style.height = (Hdegree - Hconfig.minTemp) / (Hconfig.maxTemp - Hconfig.minTemp) * 100 + "%";
     humidity.dataset.value = Hdegree + units[Hconfig.unit];
+    
   }
   
 
