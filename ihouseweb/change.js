@@ -186,7 +186,7 @@ const units = {
  
   function setTemperature() {
     if(temperature.dataset.value != Tdegree + units[Hconfig.unit]){
-        Tdegree=temperature.dataset.value.substring(0, 3);
+        Tdegree=parseInt(temperature.dataset.value.substring(0, 3),10);
         updateData('temperature', {
             degree: Tdegree,
         });
@@ -198,7 +198,7 @@ const units = {
 
   function setHumidity() {
     if(humidity.dataset.value != Hdegree + units[Hconfig.unit]){
-        Hdegree=humidity.dataset.value.substring(0, 3);
+        Hdegree=parseInt(humidity.dataset.value.substring(0, 3),10);
         updateData('humidity', {
             degree: Hdegree,
         });
