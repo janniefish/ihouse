@@ -37,10 +37,10 @@
 
 .termometer {
   width: 12px;
-  background: #38383f;
+  background: #DDDDDD;
   height: 100px;
   position: relative;
-  border: 5px solid #2a2a2e;
+  border: 5px solid #DDDDDD;
   border-radius: 20px;
   z-index: 1;
   margin-bottom: 25px;
@@ -57,7 +57,7 @@
   width: 100%;
   height: 34px;
   bottom: 9px;
-  background: #38383f;
+  background: #DDDDDD;
   z-index: -1;
 }
 
@@ -67,7 +67,7 @@
   height: 30px;
   background-color: #3dcadf;
   bottom: -30px;
-  border: 5px solid #2a2a2e;
+  border: 5px solid #DDDDDD;
   z-index: -3;
   left: 50%;
 }
@@ -110,7 +110,7 @@
 
 .termometer .temperature:before {
   content: attr(data-value);
-  background: rgba(0, 0, 0, 0.7);
+  background: 	#888888;
   color: white;
   z-index: 2;
   padding: 5px 10px;
@@ -126,7 +126,7 @@
   content: "";
   border-top: 0.4545454545em solid transparent;
   border-bottom: 0.4545454545em solid transparent;
-  border-right: 0.6666666667em solid rgba(0, 0, 0, 0.7);
+  border-right: 0.6666666667em solid #888888;
   left: 100%;
   top: calc(-1em / 2.2 + 5px);
 }
