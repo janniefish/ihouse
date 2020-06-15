@@ -44,11 +44,15 @@ process.on('SIGINT', function () { //on ctrl+c
 io.on('connection', (socket) => {
   console.log('a user connected');
 
+  socket.emit('DHT22',{tem,hu});
+
   socket.on("disconnect", () => {
     console.log("a user go out");
   });
 
 });
+
+
 
 function handler (req, res) { //create server
   fs.readFile(__dirname + '/ihouseweb/index.html', 
