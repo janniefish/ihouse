@@ -8,6 +8,18 @@ let lightStrip = false;
 var r_color = 0;
 var g_color = 0;
 var b_color = 0;
+const config = {
+    minTemp: 0,
+    maxTemp: 100,
+    unit: "Celcius" };
+const Hconfig = {
+    minTemp: 0,
+    maxTemp: 100,
+    unit: "degree" };
+const temperature = document.querySelector(".temperature");
+const humidity = document.querySelector(".humidity .temperature");
+let Tdegree = 27;
+let Hdegree = 87;
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -52,6 +64,14 @@ function getData() {
                     break;
                 case "led":
 
+                    break;
+                case "temperature":
+                    Tdegree=doc.data().degree;
+                    console.log(doc.data().degree);
+                    break;
+                case "humidity":
+                    Hdegree=doc.data().degree;
+                    console.log(doc.data().degree);
                     break;
                 case "light":
                     document.getElementById('red').value = doc.data().red;
@@ -163,20 +183,7 @@ const units = {
     degree: "%" };
   
   
-  const config = {
-    minTemp: -20,
-    maxTemp: 50,
-    unit: "Celcius" };
-
-const Hconfig = {
-    minTemp: 0,
-    maxTemp: 100,
-    unit: "degree" };
-  
-  const temperature = document.querySelector(".temperature");
-  const humidity = document.querySelector(".humidity .temperature");
-  const Tdegree = 27;
-  const Hdegree = 87;
+ 
   function setTemperature() {
     temperature.style.height = (Tdegree - config.minTemp) / (config.maxTemp - config.minTemp) * 100 + "%";
     temperature.dataset.value = Tdegree + units[config.unit];
