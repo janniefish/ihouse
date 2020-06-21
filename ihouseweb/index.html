@@ -172,23 +172,39 @@
 			initime = setTimeout("cli_on.click()", 1000);
 		}
 
-
 		socket.on('DHT22', (msg) => {
+			const units = {
+				Celcius: "°C",
+				degree: "%"
+			};
+
+
+			const config = {
+				minTemp: -20,
+				maxTemp: 50,
+				unit: "Celcius"
+			};
+
+			const Hconfig = {
+				minTemp: 0,
+				maxTemp: 100,
+				unit: "degree"
+			};
+
 			const temperature_socket = msg.tem;
 			const humidity_socket = msg.hu;
 
 			const temperature = document.querySelector(".temperature");
 			const humidity = document.querySelector(".humidity .temperature");
 
-			function setTemperature() {
-				temperature.style.height = (temperature_socket - config.minTemp) / (config.maxTemp - config.minTemp) * 100 + "%";
-				temperature.dataset.value = temperature_socket + units[config.unit];
-			}
 
-			function setHumidity() {
-				humidity.style.height = (humidity_socket - Hconfig.minTemp) / (Hconfig.maxTemp - Hconfig.minTemp) * 100 + "%";
-				humidity.dataset.value = humidity_socket + units[Hconfig.unit];
-			}
+			temperature.style.height = (temperature_socket - config.minTemp) / (config.maxTemp - config.minTemp) *
+				100 + "%";
+			temperature.dataset.value = temperature_socket + units[config.unit];
+
+			humidity.style.height = (humidity_socket - Hconfig.minTemp) / (Hconfig.maxTemp - Hconfig.minTemp) * 100 +
+				"%";
+			humidity.dataset.value = humidity_socket + units[Hconfig.unit];
 		})
 	</script>
 

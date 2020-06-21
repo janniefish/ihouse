@@ -160,36 +160,40 @@ function getData() {
 
 const units = {
     Celcius: "°C",
-    degree: "%" };
-  
-  
-  const config = {
+    degree: "%"
+};
+
+
+const config = {
     minTemp: -20,
     maxTemp: 50,
-    unit: "Celcius" };
+    unit: "Celcius"
+};
 
 const Hconfig = {
     minTemp: 0,
     maxTemp: 100,
-    unit: "degree" };
-  
-  const temperature = document.querySelector(".temperature");
-  const humidity = document.querySelector(".humidity .temperature");
-  const Tdegree = 27;
-  const Hdegree = 87;
-  function setTemperature() {
+    unit: "degree"
+};
+
+const temperature = document.querySelector(".temperature");
+const humidity = document.querySelector(".humidity .temperature");
+const Tdegree = 27;
+const Hdegree = 87;
+
+function setTemperature() {
     temperature.style.height = (Tdegree - config.minTemp) / (config.maxTemp - config.minTemp) * 100 + "%";
     temperature.dataset.value = Tdegree + units[config.unit];
-  }
+}
 
-  function setHumidity() {
+function setHumidity() {
     humidity.style.height = (Hdegree - Hconfig.minTemp) / (Hconfig.maxTemp - Hconfig.minTemp) * 100 + "%";
     humidity.dataset.value = Hdegree + units[Hconfig.unit];
-  }
-  
+}
 
-  setTimeout(setTemperature, 1000);
-  setTimeout(setHumidity, 1000);
+
+setTimeout(setTemperature, 1000);
+setTimeout(setHumidity, 1000);
 
 
 
@@ -239,12 +243,19 @@ function changeOptions() {
 
 
 function peopleInduction() {
-
+    doorOpen = true;
+    fanOpen = false;
+    lightOpen = false;
+    lightRing = false;
+    lightStrip = false;
+    document.getElementById("page").style.backgroundImage = "url('./images/house_black.png')";
     document.getElementById("people_induction").style.cursor = "url('./images/cursor.cur'),auto";
     document.getElementById("door").src = "./images/opendoor.png";
     document.getElementById("fan").src = "./images/fan.png";
     document.getElementById("light").src = "./images/closelight.png";
-    document.getElementById("page").style.backgroundImage = "url('./images/house_black.png')";
+    document.getElementById("lightstrip_img").src = "./images/lightstrip.png";
+    document.getElementById("lightStrip").innerText = "燈條發亮";
+    // changelightStrip();
     r = $('#red').val(120);
     b = $('#green').val(130);
     g = $('#blue').val(140);
@@ -286,11 +297,12 @@ function peopleInduction() {
     send(130);
     send(140);
     send(150);
-    
+
 
 }
 
 function peopleLeave() {
+    doorOpen = false;
     document.getElementById("door").src = "./images/closedoor.png";
 
 }
@@ -349,12 +361,19 @@ function changelight() {
 
 function changelightStrip() {
     console.log(document.getElementById("lightStrip").innerText);
-    if (!lightStrip) {
+    if (lightStrip) {
         document.getElementById("lightStrip").innerText = "燈條關閉";
-        document.getElementById("lightstrip_img").src="./images/lightstrip_open.gif";
+        document.getElementById("lightstrip_img").src = "./images/lightstrip_open.gif";
+        // clearTimeout(initime);
+        // r_len = 0;
+        // timer = setInterval(slideright, 10);
     } else {
         document.getElementById("lightStrip").innerText = "燈條發亮";
-        document.getElementById("lightstrip_img").src="./images/lightstrip.png";
+        document.getElementById("lightstrip_img").src = "./images/lightstrip.png";
+        // clearTimeout(initime);
+        // r_len = -270;
+        // timer = setInterval(slideleft, 10);
+
     }
     updateData('lightStrip', {
         onoff: Boolean(lightStrip)
@@ -486,6 +505,7 @@ var cli_on = document.getElementById("cli_on");
 var timer = null,
     initime = null,
     r_len = 0;
+
 function openlightRing() {
     /*
     combox.style.right = flag?'-270px':0;
@@ -520,5 +540,3 @@ function slideleft() {
         combox.style.right = r_len + 'px';
     }
 }
-
-
