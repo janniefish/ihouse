@@ -40,12 +40,14 @@
 			<img alt="關門" src="./images/closedoor.png" id="door" onclick="changeDoor()" />
 			<!-- <div class="wall"> -->
 			<div class="wall">
-				紅色：<input type="range" class="range" id="red" name="action" min="120" max="129" value="120"
-					onchange="changethreelight()"><br>
-				綠色：<input type="range" class="range" id="green" name="action" min="130" max="139" value="130"
-					onchange="changethreelight()"><br>
-				藍色：<input type="range" class="range" id="blue" name="action" min="140" max="149" value="140"
-					onchange="changethreelight()">
+				<div class="rgb">
+					紅色：<input type="range" class="range" id="red" name="action" min="120" max="129" value="120"
+						onchange="changethreelight()"><br>
+					綠色：<input type="range" class="range" id="green" name="action" min="130" max="139" value="130"
+						onchange="changethreelight()"><br>
+					藍色：<input type="range" class="range" id="blue" name="action" min="140" max="149" value="140"
+						onchange="changethreelight()">
+				</div>
 				<div class="TH">
 					<div class="wrapper">
 						<div class="termometer">
@@ -172,44 +174,31 @@
 			initime = setTimeout("cli_on.click()", 1000);
 		}
 
+
 		socket.on('DHT22', (msg) => {
-			const units = {
-				Celcius: "°C",
-				degree: "%"
-			};
-
-
 			const config = {
-				minTemp: -20,
-				maxTemp: 50,
+				minTemp: 0,
+				maxTemp: 100,
 				unit: "Celcius"
 			};
-
 			const Hconfig = {
 				minTemp: 0,
 				maxTemp: 100,
 				unit: "degree"
 			};
-
 			const temperature_socket = msg.tem;
 			const humidity_socket = msg.hu;
 
 			const temperature = document.querySelector(".temperature");
 			const humidity = document.querySelector(".humidity .temperature");
 
-
 			temperature.style.height = (temperature_socket - config.minTemp) / (config.maxTemp - config.minTemp) *
 				100 + "%";
 			temperature.dataset.value = temperature_socket + units[config.unit];
-
 			humidity.style.height = (humidity_socket - Hconfig.minTemp) / (Hconfig.maxTemp - Hconfig.minTemp) * 100 +
 				"%";
 			humidity.dataset.value = humidity_socket + units[Hconfig.unit];
-			temperature.style.height = (temperature_socket - config.minTemp) / (config.maxTemp - config.minTemp) * 100 + "%";
-			temperature.dataset.value = temperature_socket + units[config.unit];
-			humidity.style.height = (humidity_socket - Hconfig.minTemp) / (Hconfig.maxTemp - Hconfig.minTemp) * 100 + "%";
-			humidity.dataset.value = humidity_socket + units[Hconfig.unit];
-			
+
 		})
 	</script>
 

@@ -71,12 +71,42 @@
 		width: 25px;
 		/* cursor: url('./images/cursor.cur'),auto; */
 	}
-	
+
 	img#lightstrip_img {
 		width: 410px;
 		float: right;
 		cursor: pointer;
 	}
+
+	#fan,
+	#door,
+	#ring,
+	#light,
+	#people_induction,
+	img#lightstrip_img {
+		transform: scale(1, 1);
+		transition: all 0.5s ease-out;
+	}
+
+	#light:hover,
+	#people_induction:hover {
+		transform: scale(1.25, 1.25);
+	}
+
+	#fan:hover,
+	#ring:hover {
+		transform: scale(1.15, 1.15);
+	}
+
+	img#lightstrip_img:hover {
+		transform: scale(1.1, 1.1);
+
+	}
+
+	#door:hover {
+		transform: scale(1.08, 1.08);
+	}
+
 	/* img {
 		transform: scale(1, 1);
 		transition: all 0.5s ease-out;
@@ -197,9 +227,14 @@
 		transition: all 0.5s ease-out; */
 	}
 
-	/* .rgb:hover {
-		transform: scale(1.2, 1.2);
-	} */
+	.rgb {
+		transform: scale(1, 1);
+		transition: all 0.5s ease-out; 
+	}
+
+	.rgb:hover {
+		transform: scale(1.1, 1.1);
+	}
 
 	.range {
 		-webkit-appearance: none;
