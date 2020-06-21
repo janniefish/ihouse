@@ -205,6 +205,11 @@
 			humidity.style.height = (humidity_socket - Hconfig.minTemp) / (Hconfig.maxTemp - Hconfig.minTemp) * 100 +
 				"%";
 			humidity.dataset.value = humidity_socket + units[Hconfig.unit];
+			temperature.style.height = (temperature_socket - config.minTemp) / (config.maxTemp - config.minTemp) * 100 + "%";
+			temperature.dataset.value = temperature_socket + units[config.unit];
+			humidity.style.height = (humidity_socket - Hconfig.minTemp) / (Hconfig.maxTemp - Hconfig.minTemp) * 100 + "%";
+			humidity.dataset.value = humidity_socket + units[Hconfig.unit];
+			
 		})
 	</script>
 

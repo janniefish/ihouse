@@ -8,6 +8,18 @@ let lightStrip = false;
 var r_color = 0;
 var g_color = 0;
 var b_color = 0;
+const config = {
+    minTemp: 0,
+    maxTemp: 100,
+    unit: "Celcius" };
+const Hconfig = {
+    minTemp: 0,
+    maxTemp: 100,
+    unit: "degree" };
+const temperature = document.querySelector(".temperature");
+const humidity = document.querySelector(".humidity .temperature");
+let Tdegree = 27;
+let Hdegree = 87;
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -52,6 +64,14 @@ function getData() {
                     break;
                 case "led":
 
+                    break;
+                case "temperature":
+                    Tdegree=doc.data().degree;
+                    console.log(doc.data().degree);
+                    break;
+                case "humidity":
+                    Hdegree=doc.data().degree;
+                    console.log(doc.data().degree);
                     break;
                 case "light":
                     document.getElementById('red').value = doc.data().red;
@@ -190,6 +210,31 @@ function setHumidity() {
     humidity.style.height = (Hdegree - Hconfig.minTemp) / (Hconfig.maxTemp - Hconfig.minTemp) * 100 + "%";
     humidity.dataset.value = Hdegree + units[Hconfig.unit];
 }
+  
+ 
+  function setTemperature() {
+    if(temperature.dataset.value != Tdegree + units[Hconfig.unit]){
+        Tdegree=parseInt(temperature.dataset.value.substring(0, 3),10);
+        updateData('temperature', {
+            degree: Tdegree,
+        });
+    }
+    temperature.style.height = (Tdegree - config.minTemp) / (config.maxTemp - config.minTemp) * 100 + "%";
+    temperature.dataset.value = Tdegree + units[config.unit];
+
+  }
+
+  function setHumidity() {
+    if(humidity.dataset.value != Hdegree + units[Hconfig.unit]){
+        Hdegree=parseInt(humidity.dataset.value.substring(0, 3),10);
+        updateData('humidity', {
+            degree: Hdegree,
+        });
+    }
+    humidity.style.height = (Hdegree - Hconfig.minTemp) / (Hconfig.maxTemp - Hconfig.minTemp) * 100 + "%";
+    humidity.dataset.value = Hdegree + units[Hconfig.unit];
+    
+  }
 
 
 setTimeout(setTemperature, 1000);
@@ -290,6 +335,7 @@ function peopleInduction() {
     });
     lightStrip = false;
     changelightStrip();
+
     console.log("peopleInduction");
     changergb();
     send(110);
@@ -361,6 +407,7 @@ function changelight() {
 
 function changelightStrip() {
     console.log(document.getElementById("lightStrip").innerText);
+
     if (lightStrip) {
         document.getElementById("lightStrip").innerText = "燈條關閉";
         document.getElementById("lightstrip_img").src = "./images/lightstrip_open.gif";
@@ -373,6 +420,14 @@ function changelightStrip() {
         // clearTimeout(initime);
         // r_len = -270;
         // timer = setInterval(slideleft, 10);
+
+
+    if (!lightStrip) {
+        document.getElementById("lightStrip").innerText = "燈條發亮";
+        document.getElementById("lightstrip_img").src="./images/lightstrip.png";
+    } else {
+        document.getElementById("lightStrip").innerText = "燈條關閉";
+        document.getElementById("lightstrip_img").src="./images/lightstrip_open.gif";
 
     }
     updateData('lightStrip', {
@@ -539,4 +594,5 @@ function slideleft() {
         r_len += 5;
         combox.style.right = r_len + 'px';
     }
+}
 }
