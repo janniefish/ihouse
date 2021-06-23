@@ -22,11 +22,12 @@ let Tdegree = 27;
 let Hdegree = 87;
 
 // Your web app's Firebase configuration
-config = configparser.ConfigParser()
-config.read('config.ini')
+const config = require('config');
+const firebaseConfig = config.get('firebaseConfig');
+
 
 // Initialize Firebase
-firebase.initializeApp(config.get('firebase', 'firebaseConfig'));
+firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 var db = firebase.firestore();
