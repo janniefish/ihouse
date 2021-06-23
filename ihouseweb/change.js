@@ -22,18 +22,11 @@ let Tdegree = 27;
 let Hdegree = 87;
 
 // Your web app's Firebase configuration
-var firebaseConfig = {
-    apiKey: "AIzaSyANb_liFPd2Eysd324y8jlUw_WPFfbPf2A",
-    authDomain: "myhouse-59ddd.firebaseapp.com",
-    databaseURL: "https://myhouse-59ddd.firebaseio.com",
-    projectId: "myhouse-59ddd",
-    storageBucket: "myhouse-59ddd.appspot.com",
-    messagingSenderId: "90168120796",
-    appId: "1:90168120796:web:960c0a79427721038eeb19",
-    measurementId: "G-SH95M8H1YJ"
-};
+config = configparser.ConfigParser()
+config.read('config.ini')
+
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(config.get('firebase', 'firebaseConfig'));
 firebase.analytics();
 
 var db = firebase.firestore();
@@ -121,38 +114,38 @@ function getData() {
 }
 
 
-// $('input,select').change(function (event) {
-//     // event.preventDefault();
-//     console.log("input, select");
-//     let action = event.target;
-//     let category = '';
-//     let num = Math.floor(Number(action.value) / 10);
-//     console.log(Number(action.value) / 10);
-//     let key = ''
+$('input,select').change(function (event) {
+    // event.preventDefault();
+    console.log("input, select");
+    let action = event.target;
+    let category = '';
+    let num = Math.floor(Number(action.value) / 10);
+    console.log(Number(action.value) / 10);
+    // let key = ''
 
 
-//     if (num == 12) {
-//         key = 'red';
-//         category = 'light';
-//     }
-//     if (num == 13) {
-//         key = 'green';
-//         category = 'light';
-//     }
-//     if (num == 14) {
-//         key = 'blue';
-//         category = 'light';
-//     }
-//     if (num == 15) {
-//         key = 'Options';
-//         category = 'lightRing';
-//     }
-//     updateData(category, {
-//         [key]: Number(action.value)
-//     });
-//     send(action.value);
+    // if (num == 12) {
+    //     key = 'red';
+    //     category = 'light';
+    // }
+    // if (num == 13) {
+    //     key = 'green';
+    //     category = 'light';
+    // }
+    // if (num == 14) {
+    //     key = 'blue';
+    //     category = 'light';
+    // }
+    // if (num == 15) {
+    //     key = 'Options';
+    //     category = 'lightRing';
+    // }
+    // updateData(category, {
+    //     [key]: Number(action.value)
+    // });
+    send(action.value);
 
-// });
+});
 
 
 
@@ -236,9 +229,9 @@ function changethreelight() {
         green: Number(g.val()),
         red: Number(r.val()),
     });
-    send(b.val());
-    send(g.val());
-    send(r.val());
+    // send(b.val());
+    // send(g.val());
+    // send(r.val());
 }
 
 
@@ -323,7 +316,7 @@ function changering() {
 
 function changeDoor() {
     console.log(document.getElementById("door").src);
-    if (!doorOpen) {
+    if (doorOpen) {
         document.getElementById("door").src = "./images/opendoor.png";
         send('111');
     } else {
@@ -340,7 +333,7 @@ function changeDoor() {
 
 function changefan() {
     console.log(document.getElementById("fan").src);
-    if (!fanOpen) {
+    if (fanOpen) {
         document.getElementById("fan").src = "./images/fanopen.gif";
     } else {
         document.getElementById("fan").src = "./images/fan.png";
@@ -354,7 +347,7 @@ function changefan() {
 
 function changelight() {
     console.log(document.getElementById("light").src);
-    if (!lightOpen) {
+    if (lightOpen) {
         document.getElementById("light").src = "./images/openlight.png";
         document.getElementById("page").style.backgroundImage = "url('./images/housebg.jpg')";
     } else {
