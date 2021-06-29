@@ -22,9 +22,18 @@ let Tdegree = 27;
 let Hdegree = 87;
 
 // Your web app's Firebase configuration
-const config = require('config');
-const firebaseConfig = config.get('firebaseConfig');
-
+// const config = require('config');
+// const firebaseConfig = config.get('firebaseConfig');
+var firebaseConfig = {
+    apiKey: "AIzaSyANb_liFPd2Eysd324y8jlUw_WPFfbPf2A",
+    authDomain: "myhouse-59ddd.firebaseapp.com",
+    databaseURL: "https://myhouse-59ddd.firebaseio.com",
+    projectId: "myhouse-59ddd",
+    storageBucket: "myhouse-59ddd.appspot.com",
+    messagingSenderId: "90168120796",
+    appId: "1:90168120796:web:960c0a79427721038eeb19",
+    measurementId: "G-SH95M8H1YJ"
+}
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
